@@ -1,0 +1,31 @@
+# Enable rewrite engine and route requests to framework
+RewriteEngine On
+
+# Some servers require you to specify the `RewriteBase` directive
+# In such cases, it should be the path (relative to the document root)
+# containing this .htaccess file
+#
+# RewriteBase /
+
+
+
+
+# В шараге роутинг нормально не работает
+RewriteRule ^(tmp)\/|\.ini$ - [R=404]
+
+#RewriteCond %{REQUEST_FILENAME} !-l
+#RewriteCond %{REQUEST_FILENAME} !-f
+#RewriteCond %{REQUEST_FILENAME} !-d
+#RewriteRule .* system/routing.php [L,QSA]
+#RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization},L]
+
+# Создать редирект с сайта на выход
+RewriteRule ^logout$ /exit.php [L,QSA]
+# Создать редирект с сайта на регистрацию
+RewriteRule ^reg$ /pages/reg.php [L,QSA]
+# Создать редирект для страницы мейк
+RewriteRule ^make$ /make.php [L,QSA]
+# Создать редирект для страницы просмотра пропуска
+RewriteRule ^pass$ /pages/pass/all_view.php [L,QSA]
+# Создать редирект для удаления пропуска
+RewriteRule ^pass\/delete /system/function/delete.php [L,QSA]
