@@ -29,3 +29,12 @@ RewriteRule ^make$ /make.php [L,QSA]
 RewriteRule ^pass$ /pages/pass/all_view.php [L,QSA]
 # Создать редирект для удаления пропуска
 RewriteRule ^pass\/delete /system/function/delete.php [L,QSA]
+
+# Создать редирект для страницы редактирования пропусков
+RewriteRule ^pass\/edit edit.php [L,QSA]
+# Создать редирект для страницы деактивации пропуска
+RewriteRule ^pass\/deactivate /system/function/unvalid.php [L,QSA]
+# Создать редирект для страницы активации пропуска
+RewriteRule ^pass\/activate /system/function/valid.php [L,QSA]
+# Создать редирект для API
+RewriteRule ^api/get.pass$ /api/get_pass.php [L,QSA]

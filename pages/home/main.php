@@ -54,10 +54,10 @@
                     echo '<td>' . $pass->id . '</td>';
                     echo '<td>' . $pass->fio . '</td>';
                     // Проверка статуса пропуска
-                    if (!$pass->status == "valid") {
-                        echo '<td>Не активирован</td>';
-                    } else {
+                    if ($pass->status == "valid") {
                         echo '<td>Активирован</td>';
+                    } else {
+                        echo '<td>Не активирован</td>';
                     }
                     echo '<td>' . $pass->date_activation . '</td>';
                     echo '<td>' . $pass->date_expiration . '</td>';

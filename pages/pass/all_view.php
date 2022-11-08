@@ -98,7 +98,7 @@ if(!$user){
                 </div>
             </div>
             <div class="another_parent">
-                <a rel='nofollow' href='https://www.qr-code-generator.com' border='0' style='cursor:default'><img src='https://chart.googleapis.com/chart?cht=qr&chl=flowpass uniq token: <?php echo $user->token; ?>&chs=180x180&choe=UTF-8&chld=L|2' alt=''></a>
+                <img src='https://chart.googleapis.com/chart?cht=qr&chl=flowpass uniq token: <?php echo $user->token; ?>&chs=180x180&choe=UTF-8&chld=L|2' alt=''></a>
                 <a>Нажмите, чтобы повторить отправку электронного письма</a>
 
             </div>

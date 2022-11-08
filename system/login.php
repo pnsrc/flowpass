@@ -20,12 +20,17 @@ if (isset($_POST['do_login'])) {
     if ($user) {
         // Если пользователь существует, проверьте, правильный ли пароль
         if (password_verify($password, $user->password)) {
+            // Генерируем токен
+            $token = bin2hex(random_bytes(32));;
+
             // Если пароль правильный, создать сессию для пользователя
             $_SESSION['logged_user'] = $user;
             // Обновить время последнего входа пользователя, а также его one time token
             $user->last_login = date('Y-m-d H:i:s');
-            $user->one_time_token = bin2hex(random_bytes(32));
+            $user->one_time_token = $token;
             R::store($user);
+            // Добавляем в куки токен
+            setcookie('token', $token, time() + 60 * 60 * 24 * 30, '/');
             // Перенаправить пользователя на главную страницу
             header('Location: /');
         } else {
