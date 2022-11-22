@@ -1,4 +1,5 @@
 ## Система управления за пропусками
 
-![альтушка](https://raw.githubusercontent.com/pnsrc/flowpass/main/bw_logo.JPG?token=GHSAT0AAAAAABZZAUSLXRH5D3CWMNOBZTHSY3KKSYA "Text to show on mouseover").
+В данной ветке ведется изменение кодовой базы и реструктиразия кода flowpass//
 
+Планируется полный редизайн и оптимизация серверной части
