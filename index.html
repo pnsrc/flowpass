@@ -1,5 +1,6 @@
 <html>
     <head>
+<<<<<<< HEAD
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
         <link rel="stylesheet" href="css/style.css">
         <viewpoint name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,11 +13,22 @@
             <video id="qr-video"></video>
             <div id="demo"></div>
         </div>
+=======
+        <viewpoint name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>
+            flowpass//scanIT
+        </title>
+    </head>
+    <body>
+        <video></video>
+        <div id="demo"></div>
+>>>>>>> f0b1f6e1edeef0e3601e3499674f7e5e3b38c460
     </body>
     <script type="module">
     import QrScanner from "./js/qr-scanner.min.js";
     QrScanner.WORKER_PATH = './js/qr-scanner-worker.min.js';
     const video = document.querySelector('video');
+<<<<<<< HEAD
     // Добавляем рамку для сканирования
     const canvas = document.createElement('canvas');
     canvas.style.position = 'fixed';
@@ -51,11 +63,21 @@
         if (data.data == document.getElementById("demo").innerHTML) {
             return;
             alert("Повторяется");
+=======
+    const scanner = new QrScanner(video, data => result(data));
+    scanner.start();
+
+    function result(data) {
+        // Проверяем не повторяется ли результат с предыдущим
+        if (data == document.getElementById("demo").innerHTML) {
+            return;
+>>>>>>> f0b1f6e1edeef0e3601e3499674f7e5e3b38c460
         } else {
             // Отправляем результат на сервер и получаем ответ
             var xhttp = new XMLHttpRequest();
             xhttp.onreadystatechange = function() {
                 if (this.readyState == 4 && this.status == 200) {
+<<<<<<< HEAD
                     var jsondata = JSON.parse(this.responseText);
                     // Выводи результат в элемент demo
                     document.getElementById("demo").innerHTML = jsondata.fio;
@@ -72,15 +94,26 @@
                         demo.style.display = 'none';
                     });
 
+=======
+                    document.getElementById("demo").innerHTML = this.responseText;
+>>>>>>> f0b1f6e1edeef0e3601e3499674f7e5e3b38c460
                 }
             };
             xhttp.open("POST", "http://localhost/api/get.pass", true);
             xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+<<<<<<< HEAD
             xhttp.send("token=" + data.data);
             // Выводим результат в виде json в консоль
             //document.getElementById("demo").innerHTML = data;
 
             // Выводим fio из ответа
+=======
+            xhttp.send("token=" + data);
+            // Выводим результат
+            document.getElementById("demo").innerHTML = data;
+            // Выводим fio из ответа
+            document.getElementById("demo").innerHTML = data.fio;
+>>>>>>> f0b1f6e1edeef0e3601e3499674f7e5e3b38c460
             // Останавливаем сканер
             scanner.stop();
         }
