@@ -1,0 +1,46 @@
+<html>
+    <head>
+        <viewpoint name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>
+            flowpass//scanIT
+        </title>
+    </head>
+    <body>
+        <video></video>
+        <div id="demo"></div>
+    </body>
+    <script type="module">
+    import QrScanner from "./js/qr-scanner.min.js";
+    QrScanner.WORKER_PATH = './js/qr-scanner-worker.min.js';
+    const video = document.querySelector('video');
+    const scanner = new QrScanner(video, data => result(data));
+    scanner.start();
+
+    function result(data) {
+        // Проверяем не повторяется ли результат с предыдущим
+        if (data == document.getElementById("demo").innerHTML) {
+            return;
+        } else {
+            // Отправляем результат на сервер и получаем ответ
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    document.getElementById("demo").innerHTML = this.responseText;
+                }
+            };
+            xhttp.open("POST", "http://localhost/api/get.pass", true);
+            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xhttp.send("token=" + data);
+            // Выводим результат
+            document.getElementById("demo").innerHTML = data;
+            // Выводим fio из ответа
+            document.getElementById("demo").innerHTML = data.fio;
+            // Останавливаем сканер
+            scanner.stop();
+        }
+    }
+
+
+
+    </script>
+</html>
