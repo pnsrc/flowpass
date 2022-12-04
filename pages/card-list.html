@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="../libs/font-awesome/css/all.css">
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+
+<body>
+  <div class="wrapper">
+    <header>
+      <nav class="header__nav header__nav_black">
+        <a href="card-list.html" class="header__logo">flowpass//</a>
+      </nav>
+      <nav class="header__nav">
+        <ul class="header__list">
+          <li><a href="card-new.html" class="header__link">Создать пропуск</a></li>
+          <li><a href="card-list.html" class="header__link">Список пропусков</a></li>
+          <li><a href="" class="header__link">Уведомления</a></li>
+          <li><a href="" class="header__link">Настройки</a></li>
+          <li><a href="" class="header__link">Выход</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <section class="card-list">
+        <div class="card-list__container container">
+          <h1 class="card-list__title title">Список пропусков</h1>
+          <div class="card-list__wrapper wrapper_bg">
+            <table class="card-list__table">
+              <thead>
+                <tr>
+                  <th class="card-list__id">ID</th>
+                  <th class="card-list__fio">ФИО</th>
+                  <th>Статус</th>
+                  <th>Дата активации</th>
+                  <th>Дата окончания</th>
+                  <th>Переход к пропуску</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>Рыскулов Талант Алтынбекович</td>
+                  <td>Активирован</td>
+                  <td>2022-11-19 10:31:01</td>
+                  <td>2023-11-19 10:31:01</td>
+                  <td><a href="card-red.html" class="card-list__link">Перейти</a></td>
+                </tr>
+                <tr>
+                  <td>111</td>
+                  <td>Рыскулов Талант Алтынбекович</td>
+                  <td>Неактивирован</td>
+                  <td>2022-11-19 10:31:01</td>
+                  <td>2023-11-19 10:31:01</td>
+                  <td><a href="card-red.html" class="card-list__link">Перейти</a></td>
+                </tr>
+              </tbody>
+
+            </table>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+</body>
+
+</html>

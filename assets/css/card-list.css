@@ -1,0 +1,66 @@
+.card-list__title {
+  margin-bottom: 50px;
+}
+.card-list__wrapper {
+  padding: 30px 20px;
+  max-width: 980px;
+  min-height: 708px;
+  margin: 0 auto;
+  position: relative;
+}
+.card-list__link {
+  transition: all 0.3s ease;
+  display: inline-block;
+  margin-left: 5px;
+}
+.card-list__link:hover {
+  color: #fff;
+  background-color: #0C4074;
+  padding: 2px 5px;
+  margin-left: 0;
+  border-radius: 10px;
+}
+.card-list__table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  margin: 0;
+  position: relative;
+  z-index: 5;
+}
+.card-list__table .card-list__id {
+  width: 32px;
+}
+.card-list__table .card-list__fio {
+  width: 336px;
+}
+.card-list__table th,
+.card-list__table td {
+  color: #0C4074;
+  text-align: left;
+  font-size: 15px;
+  line-height: 120%;
+  border: 1px solid #0C4074;
+}
+.card-list__table th {
+  padding: 0 6px 9px;
+  font-weight: 500;
+  border-top: unset;
+}
+.card-list__table tbody td {
+  height: 37px;
+  padding: 0 6px;
+}
+.card-list__table th:first-child,
+.card-list__table td:first-child {
+  padding-left: 0;
+  border-left: unset;
+}
+.card-list__table th:last-child,
+.card-list__table td:last-child {
+  padding-right: 0;
+  border-right: unset;
+}
+.card-list__table tbody tr:last-child td {
+  border-bottom: unset;
+}/*# sourceMappingURL=card-list.css.map */
