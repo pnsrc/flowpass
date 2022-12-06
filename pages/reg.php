@@ -1,17 +1,5 @@
-<?php
-require "../system/init.php";
-?>
-<?php if (isset($_SESSION['logged_user'])) : ?>
-  <?php
-  include 'system/page/index.main.php';
-  ?>
-<?php else : ?>
-  <?php
-  include "../system/signup.php";
-  ?>
-  <!DOCTYPE html>
+<!DOCTYPE html>
   <html>
-
   <head>
     <title>flowpass//</title>
     <script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D" crossorigin="anonymous" async></script>
@@ -34,7 +22,7 @@ require "../system/init.php";
           <p class="col-lg-10 fs-4">Первая настройка системы, перед началам использования. <b>Запомните</b> Сменить пароль вы не сможете!</p>
         </div>
         <div class="col-md-10 mx-auto col-lg-5">
-          <form method="POST" action="../system/signup.php" class="p-4 p-md-5 border rounded-3 bg-light">
+          <form method="POST" action="/system/signup.php" class="p-4 p-md-5 border rounded-3 bg-light">
             <div class="form-floating mb-3">
               <input type="username" name="username" class="form-control" id="floatingInput" placeholder="Password">
               <label for="floatingInput">Ваше имя</label>
@@ -87,4 +75,3 @@ require "../system/init.php";
   </style>
 
   </html>
-<?php endif; ?>

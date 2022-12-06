@@ -1,0 +1,39 @@
+*,
+::before,
+::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: inherit;
+}
+
+a,
+button,
+span {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  background-color: inherit;
+  border: none;
+  letter-spacing: inherit;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+input{
+  &:focus-visible, &:focus{
+    outline: unset;
+    border: unset;
+  }
+}

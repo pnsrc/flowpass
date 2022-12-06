@@ -1,7 +1,12 @@
 <?php
 require "components/rb.php";
-R::setup('mysql:host=localhost;dbname=pass', 'root', '');
+// проверяем, если host не localhost то включаем режим отладки
+if($_SERVER['HTTP_HOST'] == 'localhost'){
+    R::setup('mysql:host=localhost;dbname=pass', 'root', '');
+} else {
+    R::setup('mysql:host=localhost;dbname=u1846532_default', 'u1846532_default', '9f0Lk69DuVcTvTUI');
 
+}
 
 // Проверка подключения к БД
 if (!R::testConnection()) {

@@ -1,0 +1,40 @@
+@import 'root';
+.header {
+    &__nav {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: $color-blue;
+      height: 44px;
+      &_black {
+        background-color: $color-black;
+        height: 70px;
+      }
+    }
+  
+    &__logo {
+      font-weight: bold;
+      color: $color-white;
+      font-size: 20px;
+      line-height: calc(24/20*100%);
+      text-align: center;
+      font-family: 'Urbanist', sans-serif;
+    }
+  
+    &__list {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+  
+    &__link {
+      transition: all .3s ease;
+      color: $color-white;
+      &:hover{
+        color: $color-blue;
+        background-color: $color-white;
+        padding: 2px 5px;
+        border-radius: 10px;
+      }
+    }
+  }

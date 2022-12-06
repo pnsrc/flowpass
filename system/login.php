@@ -32,7 +32,7 @@ if (isset($_POST['do_login'])) {
             // Добавляем в куки токен
             setcookie('token', $token, time() + 60 * 60 * 24 * 30, '/');
             // Перенаправить пользователя на главную страницу
-            header('Location: /');
+            echo "<script>window.location.href = '/';</script>";
         } else {
             // Если пароль неправильный, вернуть ошибку
             echo json_encode(['error' => 'Password is incorrect'],JSON_UNESCAPED_UNICODE);
