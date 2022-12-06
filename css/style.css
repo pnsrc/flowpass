@@ -13,10 +13,16 @@ body {
 }
 .h1_text__white {
     color: white;
+<<<<<<< HEAD
     font-family: unset;
     font-size: 20px;
     font-weight: bold;
     text-align: center;
+=======
+    text-align: center;
+    font-size: 2.5em;
+    margin-bottom: 0;
+>>>>>>> 8b2fadf37c6f002d980b3d0744c5e0aa186c743a
 }
 #demo {
     color: rgb(0, 0, 0);
@@ -26,6 +32,7 @@ body {
     background-color: rgba(255, 255, 255, 0.5);
     border-radius: 3%;
     padding: 1%;
+<<<<<<< HEAD
     box-shadow: 5px 27px 100px -23px rgba(0, 0, 0, 0.58);
 
 }
@@ -54,3 +61,7 @@ body {
 		background-position: 0% 50%;
 	}
 }
+=======
+
+}
+>>>>>>> 8b2fadf37c6f002d980b3d0744c5e0aa186c743a
