@@ -1,5 +1,5 @@
 <?php
-require "../system/init.php";
+require "./system/init.php";
 ?>
 <?php if (isset($_SESSION['logged_user'])) : ?>
 Доступ запрещен

@@ -12,7 +12,7 @@ if (isset($_POST['do_signup'])) {
     $key = $_POST['key'];
 
     // ключ доступа к регистрации
-    $access_key = "lol_its_not_a_key";
+    $access_key = "hehe";
 
     // проверить ключ доступа, если он не совпадает, вывести ошибку
     if ($key != $access_key) {
@@ -36,6 +36,7 @@ if (isset($_POST['do_signup'])) {
             $user->firstname = $firstname;
             $user->middlename = $middlename;
             $user->email = $email;
+            $user->toggle = true;
             $user->token = bin2hex(random_bytes(32));
             R::store($user);
             // Перенаправить пользователя на главную страницу

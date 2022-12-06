@@ -22,7 +22,7 @@
           <p class="col-lg-10 fs-4">Первая настройка системы, перед началам использования. <b>Запомните</b> Сменить пароль вы не сможете!</p>
         </div>
         <div class="col-md-10 mx-auto col-lg-5">
-          <form method="POST" action="/system/signup.php" class="p-4 p-md-5 border rounded-3 bg-light">
+          <form method="POST" action="/reg" class="p-4 p-md-5 border rounded-3 bg-light">
             <div class="form-floating mb-3">
               <input type="username" name="username" class="form-control" id="floatingInput" placeholder="Password">
               <label for="floatingInput">Ваше имя</label>

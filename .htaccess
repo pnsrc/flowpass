@@ -34,3 +34,4 @@ RewriteRule ^pass\/deactivate /system/function/unvalid.php [L,QSA]
 RewriteRule ^pass\/activate /system/function/valid.php [L,QSA]
 # Создать редирект для API
 RewriteRule ^api/get.pass$ /api/get_pass.php [L,QSA]
+RewriteRule ^api/all.pass$ /api/all_pass.php [L,QSA]
