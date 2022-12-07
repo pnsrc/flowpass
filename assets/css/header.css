@@ -24,11 +24,11 @@
 }
 .header__link {
   transition: all 0.3s ease;
+  border-radius: 10px;
   color: #fff;
 }
 .header__link:hover {
   color: #0C4074;
   background-color: #fff;
   padding: 2px 5px;
-  border-radius: 10px;
 }/*# sourceMappingURL=header.css.map */
