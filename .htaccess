@@ -29,7 +29,7 @@ RewriteRule ^pass/deactive$ /system/function/active.php [L,QSA]
 RewriteRule ^pass/edit$ /edit.php [L,QSA]
 RewriteRule ^pass/noty$ /noty.php [L,QSA]
 RewriteRule ^pass/resend$ /system/function/resend.php [L,QSA]
-RewriteRule ^pass/settings$ /settings.php [L,QSA]
+RewriteRule ^settings$ /settings.php [L,QSA]
 
 # Создать редирект для страницы редактирования пропусков
 RewriteRule ^pass\/edit edit.php [L,QSA]

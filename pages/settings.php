@@ -1,3 +1,9 @@
+<?php
+//получаем токен из сессии
+$token = $_SESSION['logged_user']->token;
+// получаем toggle из сессии
+$toggle = $_SESSION['logged_user']->toggle;
+?>
 <!DOCTYPE html>
 <html lang="ru">
 
@@ -6,15 +12,15 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>flowpass//</title>
-  <link rel="stylesheet" href="./assets/fonts/font-awesome/css/all.css">
-  <link rel="stylesheet" href="./assets/css/style.css">
+  <link rel="stylesheet" href="../assets/libs/font-awesome/css/all.css">
+  <link rel="stylesheet" href="../assets/css/style.css">
 </head>
 
 <body>
   <div class="wrapper">
     <header>
       <nav class="header__nav header__nav_black">
-        <a href="/" class="header__logo">flowpass//</a>
+      <a href="/" class="header__logo">flowpass//</a>
       </nav>
       <nav class="header__nav">
         <ul class="header__list">
@@ -25,23 +31,48 @@
           <li><a href="/exit" class="header__link">Выход</a></li>
         </ul>
       </nav>
-    </header>
     <main>
-      <section class="card-list">
-        <div class="card-list__container container">
-          <!---<h1 class="card-list__title title">Здравствуйте, <?php echo $_SESSION['logged_user']->firstname . ' ' .$_SESSION['logged_user']->lastname; ?></h1>--->
-          <h1 class="card-list__title title">Настройки</h1>
-          <div class="card-list__wrapper wrapper_bg">
-            <p>Запретить регистрацию для других пользователей</p>
-            <form action="/settings" method="POST">
-              <button type="submit" name="reg" class="btn btn_green">Запретить</button>
-            </form>
-            <p style="color:tomato;"> Внимание, чтобы восстановить данный функционал придется все заново создать файл reg.php в корневой директории!</p>
+      <section class="settings">
+        <div class="settings__container container">
+          <h1 class="settings__title title">Настройки</h1>
+          <div class="settings__wrapper wrapper_bg">
+
+            <?php
+              if ($toggle === 1) {
+                echo '<div class="settings__row">
+                <p class="settings__text">Разрешить доступ к управлению пропусками</p>
+                <button data-num="1" class="settings__button button">Разрешить</button>
+              </div>';
+              } else {
+                echo '          <div class="settings__row">
+                <p class="settings__text">Запретить доступ к управлению пропусками</p>
+                <button data-num="1" class="settings__button button">Запретить</button>
+              </div>';}
+            ?>
           </div>
         </div>
       </section>
+      <!----------------------------------- POPUP -->
+
+      <div class="popup">
+        <div data-target="1" class="popup__wrapper">
+          <div class="popup__body">
+            <h2 class="popup__title title">Вы уверены?</h2>
+            <p class="popup__text">Делая это, вы даёте согласие, что понимаете риск утечки вашего токена, а также угрозу утечки данных пользователей</p>
+            <form class="popup__form form" action="/settings" method="post">
+              <label for="form-input">
+                <p>Введите ваш токен</p>
+                <input placeholder="Токен" type="text" name="token" id="form-input" class="popup__form-input form-input">
+              </label>
+              <input type="submit" value="Подтвердить" name="submit-token" class="popup__form-button form-button button">
+            </form>
+          </div>
+        </div>
+      </div>
     </main>
   </div>
+  <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+  <script src="../assets/js/popup.js"></script>
 </body>
 
 </html>

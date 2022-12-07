@@ -1,13 +1,12 @@
 <?php
-$id = $_GET['id'];
-$user = R::findOne('pass', 'id = ?', array($id));
-if (!$user) {
-    echo '<script>alert("Пропуск не найден");</script>';
-    echo '<script>history.back();</script>';
-}
-if(isset($_POST['do_edit'])){{
+        $id = $_GET['id'];
+
+        // Получаем информацию о пропуске
+        $user = R::findOne('pass', 'id = ?', array($id));
+
+if(isset($_POST['red-card'])){{
     // Создаем функцию для генерации уникального токена для пользователя
-function generateRandomString($length = 10)
+    function generateRandomString($length = 10)
     {
         $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
         $charactersLength = strlen($characters);
@@ -17,21 +16,19 @@ function generateRandomString($length = 10)
         }
         return $randomString;
     }
-// Обновляем данные в БД
-echo $_POST['id'];
-$user = R::dispense('pass');
-$user->first_name = $_POST['first_name'];
-$user->second_name = $_POST['second_name'];
-$user->large_name = $_POST['large_name'];
-$user->fio = $_POST['second_name'] .' '. $_POST['first_name'] .' '. $_POST['large_name'];
-$user->bday = $_POST['date'];
-$user->email = $_POST['email'];
-$user->tel = $_POST['tel'];
-$user->token = generateRandomString();
-$user->passport = $_POST['passport'];
-$user->picture = $new_filename;
-R::store($pass);
-$to = $_POST['email'];
+    // Обновляем данные в БД
+    $user = R::load('pass', $_POST['id']);
+    $user->first_name = $_POST['first_name'];
+    $user->second_name = $_POST['second_name'];
+    $user->large_name = $_POST['large_name'];
+    $user->fio = $_POST['second_name'] .' '. $_POST['first_name'] .' '. $_POST['large_name'];
+    $user->bday = $_POST['date'];
+    $user->email = $_POST['email'];
+    $user->tel = $_POST['tel'];
+    $user->token = generateRandomString();
+    $user->passport = $_POST['passport'];
+    R::store($user);
+    $to = $_POST['email'];
 
 $subject = 'Данные были обновлены';
 
