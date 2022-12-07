@@ -1,38 +1,41 @@
 <!DOCTYPE html>
 <html lang="ru">
 <html>
-    <head>
-        <title>Мой пропуск</title>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-        <link rel="stylesheet" href="css/style.css">
-        <script src="js/main.js"></script>
-        <script src="js/qrcode.js"></script>
-        <link rel="apple-touch-icon" sizes="180x180" href="./img/apple-touch-icon.png">
-        <link rel="icon" type="image/png" sizes="32x32" href="./img/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="./img/favicon-16x16.png">
-        <link rel="manifest" href="./site.webmanifest">
-        <link rel="mask-icon" href="./img/safari-pinned-tab.svg" color="#5bbad5">
-        <meta name="apple-mobile-web-app-title" content="Мой Пропуск">
-        <meta name="application-name" content="Мой Пропуск">
-        <meta name="msapplication-TileColor" content="#da532c">
-        <meta name="theme-color" content="#ffffff">
-    </head>
-    <body>
-        <div class="container">
-            <div class="row">
-                <div class="card_with_centered">
-                        <div class='qr' id="qr"></div>
-                        <h1 id="fio"></h1>
-                        <div id="bday"></div>
-                        <div id="status"></div>
-                </div>
-                <div class="logo">
-                    flowpass//
-                </div>
+
+<head>
+    <title>Мой пропуск</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="apple-mobile-web-app-title" content="Мой Пропуск">
+    <meta name="application-name" content="Мой Пропуск">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="./img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./img/favicon-16x16.png">
+    <link rel="manifest" href="./site.webmanifest">
+    <link rel="mask-icon" href="./img/safari-pinned-tab.svg" color="#5bbad5">
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="card_with_centered">
+                <div class='qr' id="qr"></div>
+                <h1 class="fio" id="fio"></h1>
+                <div id="bday"></div>
+                <div id="status"></div>
+            </div>
+            <div class="logo">
+                flowpass//
             </div>
         </div>
-    </body>
+    </div>
+    <script src="js/main.js"></script>
+    <script src="js/qrcode.js"></script>
+</body>
+
 </html>

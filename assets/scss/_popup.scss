@@ -1,0 +1,30 @@
+.popup {
+  position: fixed;
+  inset: 0;
+  z-index: 5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  visibility: hidden;
+  overflow-y: auto;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+.popup_active{
+  opacity: 1;
+  visibility: visible;
+}
+.popup__wrapper {
+  display: flex;
+  position: fixed;
+  transition: all 0.3s ease;
+  opacity: 0;
+  visibility: hidden;
+  cursor: default;
+}
+.popup__wrapper_active{
+  opacity: 1;
+  visibility: visible;
+}
