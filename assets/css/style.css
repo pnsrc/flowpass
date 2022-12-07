@@ -2,6 +2,7 @@
 @import url(header.css);
 @import url(card-list.css);
 @import url(card-form.css);
+@import url(card-info.css);
 *,
 ::before,
 ::after {
@@ -114,4 +115,67 @@ main {
 .button:hover {
   background: transparent;
   color: #0C4074;
+}
+
+.main {
+  padding: 50px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.main__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.main__text {
+  max-width: 500px;
+}
+.main__text h1 {
+  font-size: 54px;
+  font-weight: bold;
+}
+.main__text h1.main__title {
+  font-family: "Urbanist";
+}
+.main__text p {
+  line-height: 120%;
+  font-size: 24px;
+}
+.main__form {
+  max-width: 425px;
+}
+.main__form form p {
+  font-size: 13px;
+  text-align: center;
+}
+
+@media (max-width: 992px) {
+  .main__row {
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+  }
+  .main__text {
+    text-align: center;
+  }
+}
+@media (max-width: 768px) {
+  .main__form {
+    width: 100%;
+  }
+  .main__text h1 {
+    font-size: 46px;
+  }
+  .main__text p {
+    font-size: 22px;
+  }
+}
+@media (max-width: 486px) {
+  .main__text h1 {
+    font-size: 36px;
+  }
+  .main__text p {
+    font-size: 18px;
+  }
 }/*# sourceMappingURL=style.css.map */

@@ -35,7 +35,7 @@ if (isset($_POST['add-card'])) {
             $user->first_name = $_POST['first_name'];
             $user->second_name = $_POST['second_name'];
             $user->large_name = $_POST['large_name'];
-            $user->fio = $_POST['first_name'] .' '. $_POST['large_name'] .' '. $_POST['second_name'];
+            $user->fio = $_POST['second_name'] .' '. $_POST['first_name'] .' '. $_POST['large_name'];
             $user->bday = $_POST['date'];
             $user->status = "valid";
             $user->date_activation = date("Y-m-d H:i:s");
@@ -57,7 +57,7 @@ if (isset($_POST['add-card'])) {
             $headers .= "Content-Type: text/html; charset=UTF-8\r\n";
 
 
-            $message = "<p>Здравствуйте, " . $_POST['first_name'] .' '. $_POST['large_name'] .' '. $_POST['second_name'] . "!</p> <br>Спасибо за регистрацию! <br>Вот ваш токен: " . $user->token. "<br> Пожалуйста, пройдите по адресу <a href='https://".$_SERVER['SERVER_NAME']."/pwa'>ссылке</a><br>С уважением, Администрация";
+            $message = "<p>Здравствуйте, " . $_POST['second_name'] .' '. $_POST['first_name'] .' '. $_POST['large_name'] . "!</p> <br>Спасибо за регистрацию! <br>Вот ваш токен: " . $user->token. "<br> Пожалуйста, пройдите по адресу <a href='https://".$_SERVER['SERVER_NAME']."/pwa'>ссылке</a><br>С уважением, Администрация";
 
 
             mail($to, $subject, $message, $headers);

@@ -13,7 +13,7 @@
             var usertoken = localStorage.getItem("token");
 
             if (usertoken == null) {
-                alert('token not find');
+                alert('Токен не найден, пожалуйста введите токен');
                 saveToken();
                 // stop load
             }
@@ -49,7 +49,7 @@
                             // Выводим QR код на страницу
                             new QRCode(document.getElementById("qr"), response.token);
                             // Выводим дату рождения на страницу
-                            document.getElementById('bday').innerHTML = 'Дата рождения: ' + response.bday;
+                            document.getElementById('bday').innerHTML = 'Дата рождения: ' + response.bday + "<br>";
 
                         }
                     }

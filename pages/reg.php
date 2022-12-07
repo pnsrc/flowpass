@@ -24,7 +24,7 @@
             </p>
           </div>
           <div class="main__form col-md-10 col-lg-5">
-            <form method="POST" action="../system/signup.php" class="p-4 p-md-5 border rounded-3 bg-light">
+            <form method="POST" action="/reg" class="p-4 p-md-5 border rounded-3 bg-light">
               <div class="form-floating mb-3">
                 <input type="username" name="username" class="form-control" id="floatingInput" placeholder="Password">
                 <label for="floatingInput">Ваше имя</label>

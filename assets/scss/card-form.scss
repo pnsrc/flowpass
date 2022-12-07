@@ -10,7 +10,7 @@
     color: $color-blue;
     text-align: center;
     font-size: 26px;
-    line-height: 30px/26px*100%;
+    line-height: calc(30/26*100%);
   }
 
   &-inputs {
@@ -30,7 +30,7 @@
     border: unset;
     font-family: "Roboto";
     font-size: 14px;
-    line-height: 16px/14px*100%;
+    line-height: calc(16/14*100%);
     box-shadow: $box-shadow-bg;
     color: $color-blue;
     padding: 0 15px;
@@ -103,7 +103,7 @@
   }
   &-text {
     font-size: 12px;
-    line-height: 14px/12px*100%;
+    line-height: calc(14/12*100%);
   }
 
   &-pic {
@@ -116,13 +116,14 @@
     height: 100px;
     margin-right: 10px;
     background-color: #D9D9D9;
+    border: 1px solid #D9D9D9;
   }
   &-file{
     width: 108px;
     p#file_name{
       margin-bottom: 6px;
       font-size: 12px;
-      line-height: 14px/12px*100%;
+      line-height: calc(14/12*100%);
     }
   }
   label.form-button {
@@ -138,7 +139,7 @@
     }
     p{
       font-size: 12px;
-      line-height: 14px/12px*100%;
+      line-height: calc(14/12*100%);
     }
     i{
       width: 16px;
@@ -171,7 +172,7 @@
       text-align: center;
       margin: 10px 0;
       font-size: 12px;
-      line-height: 14px/12px*100%;
+      line-height: calc(14/12*100%);
     }
   }
   &__form-img.img{

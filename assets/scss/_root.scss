@@ -6,3 +6,45 @@ $color-lightblue: #E8F0FF;
 $box-shadow-bg: 0px 5px 10px 0px rgba(0,0,0, 0.25);
 $box-shadow-input: 0px 3px 10px 0px rgba(0, 0, 0, 0.25);
 
+// ----------------------МИКСИНЫ----------------------
+@mixin max-w-424 {
+  @media (max-width: 424px) {
+    @content;
+  }
+}
+
+@mixin max-w-486 {
+  @media (max-width: 486px) {
+    @content;
+  }
+}
+
+@mixin max-w-575 {
+  @media (max-width: 575px) {
+    @content;
+  }
+}
+
+@mixin max-w-768 {
+  @media (max-width: 768px) {
+    @content;
+  }
+}
+
+@mixin max-w-926 {
+  @media (max-width: 926px) {
+    @content;
+  }
+}
+
+@mixin max-w-992 {
+  @media (max-width: 992px) {
+    @content;
+  }
+}
+
+@mixin max-w-1200 {
+  @media (max-width: 1200px) {
+    @content;
+  }
+}

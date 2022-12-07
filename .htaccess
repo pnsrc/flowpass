@@ -21,10 +21,15 @@ RewriteRule ^(tmp)\/|\.ini$ - [R=404]
 
 # Создать редирект с сайта на выход
 RewriteRule ^exit$ /exit.php [L,QSA]
-# Создать редирект с сайта на регистрацию
 RewriteRule ^reg$ /reg.php [L,QSA]
-# Создать редирект для страницы мейк
 RewriteRule ^pass/make$ /new.php [L,QSA]
+RewriteRule ^pass/view$ /pass_info.php [L,QSA]
+RewriteRule ^pass/active$ /system/function/active.php [L,QSA]
+RewriteRule ^pass/deactive$ /system/function/active.php [L,QSA]
+RewriteRule ^pass/edit$ /edit.php [L,QSA]
+RewriteRule ^pass/noty$ /noty.php [L,QSA]
+RewriteRule ^pass/resend$ /system/function/resend.php [L,QSA]
+RewriteRule ^pass/settings$ /settings.php [L,QSA]
 
 # Создать редирект для страницы редактирования пропусков
 RewriteRule ^pass\/edit edit.php [L,QSA]
