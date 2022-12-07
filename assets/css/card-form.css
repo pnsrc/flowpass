@@ -68,6 +68,10 @@
 .form-input:hover {
   box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.35);
 }
+.form-input::-webkit-input-placeholder {
+  color: #0C4074;
+  opacity: 0.6;
+}
 .form-input::-moz-placeholder {
   color: #0C4074;
   opacity: 0.6;
@@ -116,6 +120,7 @@
   height: 100px;
   margin-right: 10px;
   background-color: #D9D9D9;
+  border: 1px solid #D9D9D9;
 }
 .form-file {
   width: 108px;
@@ -159,7 +164,8 @@
 }
 .card-red__form-imgs i {
   font-size: 18px;
-  transform: translateY(-25px);
+  -webkit-transform: translateY(-25px);
+          transform: translateY(-25px);
 }
 .card-red__form-imgs div {
   display: flex;
