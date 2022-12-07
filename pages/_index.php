@@ -17,7 +17,7 @@
       <div class="main__container container">
           <div class="main__row">
             <div class="main__text">
-              <h1 class="lh-1 mb-3">flowpass//</h1>
+              <h1 class="lh-1 mb-3 main__title">flowpass//</h1>
               <p>Пожалуйста, авторизируйтесь в системе flowpass для управления пропусками.</p>
             </div>
             <div class="main__form col-md-10 col-lg-5">
