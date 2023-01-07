@@ -35,6 +35,8 @@
                             alert(response.error);
                             // Очищаем токен пользователя
                             localStorage.removeItem("token");
+                            // Перезагружаем страницу
+                            location.reload();
                         } else {
                             // Выводим информацию о пропуске на страницу
                             document.getElementById('fio').innerHTML = response.fio;

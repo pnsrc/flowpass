@@ -30,6 +30,7 @@ RewriteRule ^pass/edit$ /edit.php [L,QSA]
 RewriteRule ^pass/noty$ /noty.php [L,QSA]
 RewriteRule ^pass/resend$ /system/function/resend.php [L,QSA]
 RewriteRule ^settings$ /settings.php [L,QSA]
+RewriteRule ^notify$ /pages/notify.php [L,QSA]
 
 # Создать редирект для страницы редактирования пропусков
 RewriteRule ^pass\/edit edit.php [L,QSA]
