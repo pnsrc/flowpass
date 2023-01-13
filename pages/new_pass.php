@@ -68,7 +68,7 @@
                 </div>
                 <div class="card-new__form-pic form-pic">
                   <div class="card-new__form-img form-img img">
-                  <img src="../assets/img/no-img_bg-user.svg" id="chosen_image" alt="фото">
+                    <img id="chosen_image" alt="фото">
                   </div>
                   <div class="card-new__form-file form-file">
                     <p id="file_name">Фото не загружено</p>

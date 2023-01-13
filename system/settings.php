@@ -1,4 +1,6 @@
 <?php
+$otp_token = $_SESSION['_logged_user']->otp_token;
+$qrCodeUrl = $ga->getQRCodeGoogleUrl('flowpass// admin code', $otp_token);
 
 // проверяем, нажата кнопка submit-token
 if (isset($_POST['submit-token'])) {
@@ -19,6 +21,21 @@ if (isset($_POST['submit-token'])) {
         }
     } else {
     }
+}
+
+if (isset($_POST['submit-2fa'])){
+    $user = R::load('admins', $_SESSION['logged_user']->id);
+    $user->otp = 'true';
+    R::store($user);
+    unset($_SESSION['logged_user']);
+    echo "<script>window.location.href = '/';</script>";
+}
+if (isset($_POST['dissubmit-2fa'])){
+    $user = R::load('admins', $_SESSION['logged_user']->id);
+    $user->otp = 'false';
+    R::store($user);
+    unset($_SESSION['logged_user']);
+    echo "<script>window.location.href = '/';</script>";
 }
 
 ?>

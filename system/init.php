@@ -1,5 +1,8 @@
 <?php
 require "components/rb.php";
+require 'components/otp.php';
+$ga = new PHPGangsta_GoogleAuthenticator();
+
 // проверяем, если host не localhost то включаем режим отладки
 if($_SERVER['HTTP_HOST'] == 'work.flow' || $_SERVER['HTTP_HOST'] == 'localhost'){
     R::setup('mysql:host=localhost;dbname=pass', 'root', '');

@@ -3,6 +3,7 @@
 $token = $_SESSION['logged_user']->token;
 // получаем toggle из сессии
 $toggle = $_SESSION['logged_user']->toggle;
+$getotp = $_SESSION['logged_user']->otp;
 ?>
 <!DOCTYPE html>
 <html lang="ru">
@@ -49,6 +50,20 @@ $toggle = $_SESSION['logged_user']->toggle;
                 <button data-num="1" class="settings__button button">Запретить</button>
               </div>';}
             ?>
+                        <?php
+              if ($getotp === "false") {
+                echo '<div class="settings__row">
+                <p class="settings__text">Авторизация с помощью одноразового кода</p>
+                <button data-num="2" class="settings__button button">Разрешить</button>
+              </div>';
+              } else {
+                echo '<div class="settings__row">
+                <p class="settings__text">Авторизация с помощью одноразового кода</p>
+                <button data-num="3" class="settings__button button">Отключить</button>
+              </div>';
+            }
+            ?>
+
           </div>
         </div>
       </section>
@@ -65,6 +80,27 @@ $toggle = $_SESSION['logged_user']->toggle;
                 <input placeholder="Токен" type="text" name="token" id="form-input" class="popup__form-input form-input">
               </label>
               <input type="submit" value="Подтвердить" name="submit-token" class="popup__form-button form-button button">
+            </form>
+          </div>
+        </div>
+        <div data-target="2" class="popup__wrapper">
+          <div class="popup__body">
+            <h2 class="popup__title title">Активация двухэтапной авторизации</h2>
+            <p class="popup__text">После активации данной функции, вы будете обязаны вводить OTP-код, который генерирует приложение Google Authenticator. Сессия автоматически закончиться, после нажатия кнопки.</p>
+            <form class="popup__form form" action="/settings" method="post">
+              <label style="text-align: center;" for="form-input">
+                <img src="<?php echo $qrCodeUrl; ?>" alt="QR code" />
+              </label>
+              <input type="submit" value="Подтвердить" name="submit-2fa" class="popup__form-button form-button button">
+            </form>
+          </div>
+        </div>
+        <div data-target="3" class="popup__wrapper">
+          <div class="popup__body">
+            <h2 class="popup__title title">Отключение двухэтапной авторизации</h2>
+            <p class="popup__text">После отключения данной функции, вы будете выполнять авторизацию без использования OTP-кодов. Сессия автоматически закончиться, после нажатия кнопки.</p>
+            <form class="popup__form form" action="/settings" method="post">
+              <input type="submit" value="Подтвердить" name="dissubmit-2fa" class="popup__form-button form-button button">
             </form>
           </div>
         </div>
