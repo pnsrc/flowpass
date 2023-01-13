@@ -3,7 +3,8 @@ require "system/init.php";
 ?>
 <?php if (isset($_SESSION['logged_user'])) : ?>
   <?php
-  include 'pages/home.php';
+  // Redirect to home
+  header('Location: /home');
 ?>
 <?php else : ?>
     <?php

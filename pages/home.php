@@ -1,8 +1,3 @@
-<?php
-// получаем пропуска
-$passes = R::findAll('pass');
-
-?>
 <!DOCTYPE html>
 <html lang="ru">
 
@@ -11,8 +6,10 @@ $passes = R::findAll('pass');
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>flowpass//</title>
-  <link rel="stylesheet" href="./assets/fonts/font-awesome/css/all.css">
-  <link rel="stylesheet" href="./assets/css/style.css">
+  <link rel="stylesheet" href="../assets/fonts/font-awesome/css/all.css">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <script src="../assets/js/jquery-3.6.3.js"></script>
+  <script src="../assets/js/pages.js"></script>
 </head>
 
 <body>
@@ -38,6 +35,7 @@ $passes = R::findAll('pass');
           <!---<h1 class="card-list__title title">Здравствуйте, <?php echo $_SESSION['logged_user']->firstname . ' ' .$_SESSION['logged_user']->lastname; ?></h1>--->
           <h1 class="card-list__title title">Список пропусков</h1>
           <div class="card-list__wrapper wrapper_bg">
+            <!--Вывод пропусков из ajax-->
             <table class="card-list__table">
               <thead>
                 <tr>
@@ -49,21 +47,16 @@ $passes = R::findAll('pass');
                   <th>Переход к пропуску</th>
                 </tr>
               </thead>
-              <tbody>
-                <?php foreach ($passes as $pass) : ?>
-                  <tr>
-                    <td><?= $pass['id'] ?></td>
-                    <td><?= $pass['fio'] ?></td>
-                    <td><?= $pass['status'] == 'valid' ? 'Действующий' : 'Просрочен' ?></td>
-                    <td><?= $pass['date_activation'] ?></td>
-                    <td><?= $pass['date_expiration'] ?></td>
-                    <td><a href="/pass/view?id=<?= $pass['id'] ?>" class="card-list__link">Перейти</a></td>
-                  </tr>
-                <?php endforeach; ?>
+              <tbody id="all-products" class="row all-products">
+              <form id="filter-form" class="form" action='' method="GET">
+              <?php
+                include('../system/pagination.php'); ?>
+              </form>
               </tbody>
-
             </table>
-          </div>
+        </div>
+
+
         </div>
       </section>
     </main>
