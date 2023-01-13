@@ -23,7 +23,6 @@
             <div class="main__form col-md-10 col-lg-5">
               <form method="POST" action="/auth/2fa" class="p-4 p-md-5 border rounded-3 bg-light">
                 <div class="form-floating mb-3">
-                  <img src="<?php echo $qrCodeUrl; ?>" alt="QR code" />
                 </div>
                 <div class="form-floating mb-3">
                   <input type="text" name="2fa" class="form-control" id="floatingPassword"
