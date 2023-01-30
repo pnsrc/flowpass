@@ -8,7 +8,7 @@ $cat_filter = isset($_GET['cats']) ? $_GET['cats'] : '';
 $search_filter = isset($_GET['search']) ? $_GET['search'] : '';
 
 // Default limit
-$limit = isset($_GET['per-page']) ? $_GET['per-page'] : 12;
+$limit = isset($_GET['per-page']) ? $_GET['per-page'] : 20;
 
 // Default offset
 $offset = 0;

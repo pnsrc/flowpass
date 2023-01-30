@@ -1,5 +1,5 @@
 <?php
-require "./system/init.php";
+require "../init.php";
 ?>
 <?php if (isset($_SESSION['logged_user'])) : ?>
     <?php
@@ -18,7 +18,7 @@ require "./system/init.php";
         R::trash($pass);
         echo '<script>alert("Пропуск успешно удален");</script>';
         // С помощью js перенаправляем историю назад
-        echo '<script>history.back();</script>';
+        echo '<script>window.location.href="/";</script>';
     }
 
   ?>

@@ -13,7 +13,7 @@ $db_host 			= 'localhost'; //hostname or IP
 if($_SERVER['HTTP_HOST'] == 'work.flow' || $_SERVER['HTTP_HOST'] == 'localhost'){
     R::setup('mysql:host='. $db_host .';dbname='. $db_name, $db_username, $db_password);
 } else {
-    R::setup('mysql:host=localhost;dbname=u1846532_default', 'u1846532_default', '9f0Lk69DuVcTvTUI');
+    R::setup('mysql:host=localhost;dbname=flowpassru', 'flowpassru', 'root021A');
 
 }
 
@@ -23,6 +23,17 @@ if (!R::testConnection()) {
     echo json_encode(array(
         'error' => 'Ошибка подключения к БД'
     ), JSON_UNESCAPED_UNICODE);
+}
+
+function generateRandomString($length = 10)
+{
+    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    $charactersLength = strlen($characters);
+    $randomString = '';
+    for ($i = 0; $i < $length; $i++) {
+        $randomString .= $characters[rand(0, $charactersLength - 1)];
+    }
+    return $randomString;
 }
 
 

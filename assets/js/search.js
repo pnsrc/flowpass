@@ -1,9 +1,9 @@
 $(function(){
     
 //Живой поиск
-$('.search').bind("change keyup input click", function() {
+$('#search-input').bind("change keyup input click", function() {
     var search = $(this).val();
-    if(this.value.length >= 2){
+    if(this.value.length >= 1){
         $.ajax({
             type: 'post',
             url: "/api/search", //Путь к обработчику
@@ -11,20 +11,20 @@ $('.search').bind("change keyup input click", function() {
             response: 'text',
             success: function(data){
                 // console.log(search)
-                $(".search_result").html(data).fadeIn(); //Выводим полученые данные в списке
+                $(".search__result").html(data).fadeIn(); //Выводим полученые данные в списке
            }
        })
     }
 })
     
-$(".search_result").hover(function(){
+$(".search__result").hover(function(){
     $(".who").blur(); //Убираем фокус с input
 })
     
 //При выборе результата поиска, прячем список и заносим выбранный результат в input
-$(".search_result").on("click", "li", function(){
+$(".search__result").on("click", "li", function(){
     s_user = $(this).text();
     //$(".who").val(s_user).attr('disabled', 'disabled'); //деактивируем input, если нужно
-    $(".search_result").fadeOut();
+    $(".search__result").fadeOut();
 })
 })

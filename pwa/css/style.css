@@ -1,7 +1,12 @@
+@import url(../../assets/css/font.css);
+*,
+::before,
+::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 .card_with_centered {
-    margin: 0 auto;
-    float: none;
-    margin-bottom: 10px;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -9,9 +14,23 @@
     transform: translate(-50%, -50%);
     padding: 20px;
     border-radius: 10px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    max-width: 320px;
+    min-width: 260px;
+    color: #0C4074;
+}
+.card_with_centered > *:not(:last-child){
+    margin-bottom: 10px;
+}
+#fio{
+    text-align: center;
+    line-height: normal;
 }
 body{
     background-color: #f5f5f5;
+    font-family: "Roboto", serif;
 }
 .logo{
     position: absolute;
@@ -24,7 +43,7 @@ body{
     font-size: 20px;
     font-weight: bold;
     color:grey;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: "Urbanist", sans-serif;
 }
 #install{
     border: none;

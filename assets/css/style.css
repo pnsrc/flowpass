@@ -5,7 +5,7 @@
 @import url(card-info.css);
 @import url(notify.css);
 @import url(settings.css);
-@import url('https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500&display=swap');
+@import url(search.css);
 *,
 ::before,
 ::after {
