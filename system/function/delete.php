@@ -1,29 +1,27 @@
 <?php
-// Удаление пропуска
-include '../init.php';
-// Проверка на наличие id в GET запросе
-if(isset($_GET['id'])){
-    // Получаем id из GET запроса
+require "../init.php";
+?>
+<?php if (isset($_SESSION['logged_user'])) : ?>
+    <?php
+    // Получаем id из адресной строки
     $id = $_GET['id'];
-    // Проверка на наличие пропуска в базе данных
-    $user = R::findOne('pass', 'id = ?', array($id));
-    if($user){
-        // Сверяем токен администратора полученным из cookies с токеном администратора в базе данных
-        if($_COOKIE['token'] == $_SESSION['logged_user']->one_time_token){
-            // Удаляем пропуск из базы данных
-            R::trash($user);
-            // Выводим js алерт с сообщением об успешном удалении пропуска
-            echo "<script>alert('Пропуск успешно удален!'); window.location.href = '/';</script>";
-
-        } else {
-            // Выводим js алерт с сообщением об ошибке
-            echo "<script>alert('Ошибка! Попытка подделки токена'); window.location.href = '/';</script>";
-        }
-    }else{
-        // Перенаправление на страницу просмотра всех пропусков
-        header('Location: /');
+    // Ищем в БД запись с таким id
+    $pass = R::findOne('pass', 'id = ?', array($id));
+    // Если запись не найдена, то выводим ошибку в alert js
+    if (!$pass) {
+        // С помощью js пишем ошибку в alert
+        echo '<script>alert("Пропуск не найден");</script>';
+        // С помощью js перенаправляем историю назад
+        echo '<script>history.back();</script>';
+    } else {
+        // Удаляем запись
+        R::trash($pass);
+        echo '<script>alert("Пропуск успешно удален");</script>';
+        // С помощью js перенаправляем историю назад
+        echo '<script>window.location.href="/";</script>';
     }
-} else {
-    // Перенаправление на страницу просмотра всех пропусков
-    header('Location: /');
-}
+
+  ?>
+<?php else : ?>
+Доступ запрещен
+<?php endif; ?>

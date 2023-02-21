@@ -1,108 +1,149 @@
+<?php
+// Получаем id из адресной строки
+$id = $_GET['id'];
+
+// Ищем в БД запись с таким id
+$pass = R::findOne('pass', 'id = ?', array($id));
+// Получаем имя
+$name = $pass->first_name;
+// Получаем фамилию
+$second_name = $pass->second_name;
+// Получаем отчество
+$large_name = $pass->large_name;
+// Выводим дату рождения
+$birthday = $pass->bday;
+// Выводим фото
+$photo = $pass->picture;
+// Выводим статус
+$status = $pass->status;
+// Выводим телефон
+$phone = $pass->tel;
+// Выводим паспорт
+$passport = $pass->passport;
+// Выводим почту
+$email = $pass->email;
+?>
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
-        <link href="http://fonts.cdnfonts.com/css/helvetica-neue-9" rel="stylesheet">
-        <title>flowpass</title>
-        <link rel="stylesheet" href="../css/style.css">
-        <link rel="stylesheet" href="../css/all_pass.css">
+<html lang="ru">
 
-    </head>
-    <body>
-<nav>
-        <div class="first_podium center">
-            <p style="color: white;font-size: 122%;" class="text-center logo"><a href="/" style="color: white;text-decoration: none;">flowpass//</a></p>
-        </div>
-        <div class="second_podium">
-                <div class="links">
-                    <a class="nav-a active" href="/make">Создать пропуск</a>
-                    <a class="nav-a" href="/notifications">Уведомления</a>
-                    <a class="nav-a" href="/settings">Настройки</a>
-                    <a class="nav-a" href="/portal/bye">Выход</a>
-                </div>
-        </div>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>flowpass//</title>
+  <link rel="stylesheet" href="../assets/libs/font-awesome/css/all.css">
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
 
-    </nav>
-        <h1 style="    margin-left: 4%;
-        font-family: 'Helvetica Neue', sans-serif;
-">
-            <b>Редактирование пропуска</b>
-        </h1>
-        <div style="padding: 2%;     align-items: flex-start;
-        " class="container">
-            <!--Inputs-->
-        <form action="/pass/edit" enctype="multipart/form-data" method="post">
-        <div class="inputs">
-        <div class="input">
-                    <input type="hidden" name="id" id="id" value="<?php echo $user->id;?>" placeholder="Имя">
+<body>
+  <div class="wrapper">
+    <header>
+    <nav class="header__nav header__nav_black">
+        <a href="/" class="header__logo">flowpass//</a>
+      </nav>
+      <nav class="header__nav">
+        <ul class="header__list">
+          <li><a href="/pass/make" class="header__link">Создать пропуск</a></li>
+          <li><a href="/" class="header__link">Список пропусков</a></li>
+          <li><a href="/search" class="header__link">Поиск</a></li>
+          <!-- <li><a href="/notify" class="header__link">Уведомления</a></li> -->
+          <li><a href="/settings" class="header__link">Настройки</a></li>
+          <li><a href="/exit" class="header__link">Выход</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <section class="card-red">
+        <div class="card-red__container container">
+          <h1 class="card-red__title title">Редактирование пропуска</h1>
+          <div class="card-red__wrapper wrapper_bg">
+            <h2 class="card-red__title form-title title">Введите данные пользователя</h2>
+            <form id="form" class="card-red__form form" action="#" method="post">
+            <input type="hidden" name="id" id="id" value="<?php echo $pass->id;?>" placeholder="Имя">
+              <div class="card-red__form-inputs form-inputs">
+              <label class="card-red__form-label form-label" for="form-input">
+                  <input value="<?php echo $second_name; ?>" type="text" placeholder="Фамилия" name="second_name" id="form-input"
+                    class="card-red__form-input form-input _required">
+                    <span class="input__error"><!--ОШИБКА ПРИ ЗАПОЛНЕНИИ--></span>
+                </label>
+                <label class="card-red__form-label form-label" for="form-input">
+                  <input value="<?php echo $name; ?>" type="text" placeholder="Имя" name="first_name" id="form-input"
+                    class="card-red__form-input form-input _required">
+                    <span class="input__error"><!--ОШИБКА ПРИ ЗАПОЛНЕНИИ--></span>
+                </label>
+                <label class="card-red__form-label form-label" for="form-input">
+                  <input value="<?php echo $large_name; ?>" type="text" placeholder="Отчество" name="large_name" id="form-input"
+                    class="card-red__form-input form-input _required">
+                    <span class="input__error"><!--ОШИБКА ПРИ ЗАПОЛНЕНИИ--></span>
+                </label>
+                <label class="card-red__form-label form-label" for="form-input">
+                  <input value="<?php echo $birthday; ?>" type="date" data-placeholder="Дата рождения" name="date" id="form-input"
+                    class="card-red__form-input form-input fa-regular fa-calendar-days _required">
+                    <span class="input__error"><!--ОШИБКА ПРИ ЗАПОЛНЕНИИ--></span>
+                </label>
+                <label class="card-red__form-label form-label" for="form-input">
+                  <input value="<?php echo $phone; ?>" type="tel" placeholder="Номер телефона" name="tel" id="form-input"
+                    class="card-red__form-input form-input _required">
+                    <span class="input__error"><!--ОШИБКА ПРИ ЗАПОЛНЕНИИ--></span>
+                </label>
+                <label class="card-red__form-label form-label" for="form-input">
+                  <input value="<?php echo $email; ?>" type="email" placeholder="Email" name="email" id="form-input"
+                    class="card-red__form-input form-input _required">
+                    <span class="input__error"><!--ОШИБКА ПРИ ЗАПОЛНЕНИИ--></span>
+                </label>
+                <label class="card-red__form-label form-label" for="form-input">
+                  <input value="<?php echo $passport; ?>" type="text" placeholder="Серия и номер паспорта" name="passport" id="form-input"
+                    class="card-red__form-input form-input _required">
+                    <span class="input__error"><!--ОШИБКА ПРИ ЗАПОЛНЕНИИ--></span>
+                </label>
+              </div>
+              <div class="card-red__form-block form-block">
+                <div class="card-red__form-list form-list">
+                  <h4 class="card-red__form-text form-text">Фото для пропуска</h4>
+                  <p class="card-red__form-text form-text">Какое фото нужно добавить:</p>
+                  <ul class="card-red__form-text form-text">
+                    <li>размер 3 * 4 см</li>
+                    <li>белый фон</li>
+                    <li>видна голова и верхняя часть плеч</li>
+                  </ul>
                 </div>
-                <div class="input">
-                    <label for="name">Имя</label>
-                    <input type="text" name="name" id="name" value="<?php echo $user->lastname;?>" placeholder="Имя">
+                <div class="card-red__form-pic form-pic">
+                  <div class="card-red__form-imgs">
+                    <div>
+                      <div class="card-red__form-img form-img img">
+                        <img src="../<?= $photo?>" id="old_image" alt="фото">
+                      </div>
+                      <p id="old_file">Старое фото</p>
+                    </div>
+                    <i class="fa-solid fa-arrow-right"></i>
+                    <div>
+                      <div class="card-red__form-img form-img img">
+                        <img src="../assets/img/no-img_bg-user.svg" id="chosen_image" alt="фото">
+                      </div>
+                      <p id="file_name">Фото не загружено</p>
+                    </div>
+                  </div>
+                  <div class="card-red__form-file form-file">
+                    <label class="card-red__form-button form-button" for="form-input_file">
+                      <input type="file" accept=".jpeg, .png, .jpg" id="form-input_file" name="file"
+                        class="card-red__form-input form-input _required">
+                        <span class="input__error"><!--ОШИБКА ПРИ ЗАПОЛНЕНИИ--></span>
+                      <p>Выбрать фото</p>
+                      <i class="fa-regular fa-folder-open"></i>
+                    </label>
+                  </div>
                 </div>
-                <div class="input">
-                    <label for="surname">Фамилия</label>
-                    <input type="text" name="surname" id="surname" value="<?php echo $user->username;?>" placeholder="Фамилия">
-                </div>
-                <div class="input">
-                    <label for="patronymic">Отчество</label>
-                    <input type="text" name="patronymic" id="patronymic" value="<?php echo $user->patronymic;?>" placeholder="Отчество">
-                </div>
-                <div class="input">
-                    <label for="date">Дата рождения</label>
-                    <input type="date" name="bday" id="bday" value="<?php echo $user->bday;?>" placeholder="Дата">
-                </div>
-                <div class="input">
-                    <label for="number">Номер телефона</label>
-                    <input type="text" name="number" id="number" value="<?php echo $user->phone;?>" placeholder="Номер телефона">
-                </div>
-                <div class="input">
-                    <label for="email">Email</label>
-                    <input type="email" name="email" id="email" value="<?php echo $user->email;?>" placeholder="Email">
-                </div>
-                <div class="input">
-                    <label for="address">Серия и номер паспорта</label>
-                    <input type="text" name="passport" id="address" placeholder="Серия и номер паспорта">
-                </div>
-                <button class="btn" type="submit" name='do_edit'>Изменить пропуск</button>
-
+              </div>  
+              <input type="submit" value="Редактировать" name="red-card"
+                class="card-red__form-button form-button button">
+            </form>
+          </div>
         </div>
-        </form>
-    </body>
-    <style>
-input {
-    background-color: #f2f2f2;
-    border: none;
-    padding: 3%;
-    border-bottom: 2px solid crimson;
-}
-.input {
-    padding: 2%;
-}
-.btn {
-    background-color: crimson;
-    color: white;
-    border: none;
-    padding: 2%;
-    border-radius: 5px;
-    font-size: 100%;
-    font-family: 'Helvetica Neue', sans-serif;
-    cursor: pointer;
-    transition: 0.3s;
-}
-input:focus {
-    outline: none;
-}
-.btn:hover {
-    background-color: #f2f2f2;
-    color: crimson;
-    border: 2px solid crimson;
-}
-    </style>
+      </section>
+    </main>
+  </div>
+  <script src="../assets/js/form-validation.js"></script>
+  <script src="../assets/js/phone-mask.js"></script>
+</body>
 
 </html>

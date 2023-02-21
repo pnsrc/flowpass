@@ -1,10 +1,5 @@
 <?php
 // Регистрация пользователя в базе данных
-// Связанный файл ../pages/reg.php
-
-// Включить файл подключения к базе данных
-include_once '../system/init.php';
-
 // Выполнить код только если пользователь нажал кнопку "Зарегистрироваться"
 if (isset($_POST['do_signup'])) {
     // Получить данные из POST-запроса
@@ -17,7 +12,7 @@ if (isset($_POST['do_signup'])) {
     $key = $_POST['key'];
 
     // ключ доступа к регистрации
-    $access_key = "lol_its_not_a_key";
+    $access_key = "hehe";
 
     // проверить ключ доступа, если он не совпадает, вывести ошибку
     if ($key != $access_key) {
@@ -34,6 +29,7 @@ if (isset($_POST['do_signup'])) {
     } else {
         // Если пользователь не существует, проверить, совпадают ли пароли
         if ($password == $confirm_password) {
+            $secret = $ga->createSecret();
             // Если пароли совпадают, создать нового пользователя
             $user = R::dispense('admins');
             $user->password = password_hash($password, PASSWORD_DEFAULT);
@@ -41,10 +37,13 @@ if (isset($_POST['do_signup'])) {
             $user->firstname = $firstname;
             $user->middlename = $middlename;
             $user->email = $email;
+            $user->toggle = true;
+            $user->otp = 'false';
+            $user->otp_token = $secret;
             $user->token = bin2hex(random_bytes(32));
             R::store($user);
             // Перенаправить пользователя на главную страницу
-            header('Location: ../index.php');
+            echo "<script>window.location.href = '/';</script>";
         } else {
             // Если пароли не совпадают, вернуть ошибку
             echo json_encode(['error' => 'Passwords do not match'],JSON_UNESCAPED_UNICODE);
