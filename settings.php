@@ -1,11 +1,8 @@
 <?php
 require "./system/init.php";
-?>
-<?php if (isset($_SESSION['logged_user'])) : ?>
-    <?php
+if (isset($_SESSION['logged_user'])) :
   include "./system/settings.php";
   include "./pages/settings.php";
-  ?>
-<?php else : ?>
-Доступ запрещен
+else : ?>
+  Доступ запрещен
 <?php endif; ?>

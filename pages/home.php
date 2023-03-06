@@ -30,7 +30,7 @@
     <main>
       <section class="card-list">
         <div class="card-list__container container">
-          <!---<h1 class="card-list__title title">Здравствуйте, <?php echo $_SESSION['logged_user']->firstname . ' ' . $_SESSION['logged_user']->lastname; ?></h1>--->
+          <!---<h1 class="card-list__title title">Здравствуйте, <?= $_SESSION['logged_user']->firstname . ' ' . $_SESSION['logged_user']->lastname; ?></h1>--->
           <h1 class="card-list__title title">Список пропусков</h1>
           <div class="card-list__wrapper wrapper_bg">
             <!--Вывод пропусков из ajax-->
@@ -47,8 +47,7 @@
               </thead>
               <tbody id="all-products" class="row all-products">
                 <form id="filter-form" class="form" action='#' method="GET">
-                  <?php
-                  include('../system/pagination.php'); ?>
+                  <? include('../system/pagination.php'); ?>
                 </form>
               </tbody>
             </table>

@@ -1,5 +1,5 @@
 <?php
-$otp_token = $_SESSION['logged_user']->otp_token;
+$otp_token = $_SESSION['_logged_user']->otp_token;
 $qrCodeUrl = $ga->getQRCodeGoogleUrl('flowpass// admin code', $otp_token);
 
 // проверяем, нажата кнопка submit-token

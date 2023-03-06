@@ -8,6 +8,16 @@ if ($user) {
     $message = "Пользователь с таким email уже существует!";
 } else {
     // Создаем функцию для генерации уникального токена для пользователя
+    function generateRandomString($length = 10)
+    {
+        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $charactersLength = strlen($characters);
+        $randomString = '';
+        for ($i = 0; $i < $length; $i++) {
+            $randomString .= $characters[rand(0, $charactersLength - 1)];
+        }
+        return $randomString;
+    }
     if (isset($_FILES) && $_FILES['file']['error'] == 0) {
         $uploaddir = '../uploads/';
         $uploadfile = $uploaddir . basename($_FILES['file']['name']);
@@ -40,25 +50,24 @@ if ($user) {
     $headers .= "Reply-To:  hello@flowpass.ru \r\n";
     $headers .= "MIME-Version: 1.0\r\n";
     $headers .= "Content-Type: text/html; charset=UTF-8\r\n";
-
-
-    $email_body = "<p>Здравствуйте, " . $_POST['second_name'] . ' ' .
-        $_POST['first_name'] . ' ' . $_POST['large_name'] .
-        "!</p> <br>Спасибо за регистрацию! <br>Вот ваш токен: " . $user->token .
-        "<br> Пожалуйста, пройдите по адресу <a href='https://" . $_SERVER['SERVER_NAME'] .
-        "/pwa'>ссылке</a><br>С уважением, Администрация";
-
+    //  HTML-шаблон для письма
+    $email_body = file_get_contents("template_mail.html");
+    $email_body = str_replace('%second_name%', $user->second_name, $email_body);
+    $email_body = str_replace('%first_name%', $user->first_name, $email_body);
+    $email_body = str_replace('%large_name%', $user->large_name, $email_body);
+    $email_body = str_replace('%token%', $user->token, $email_body);
+    $email_body = str_replace('%link%', $_SERVER['SERVER_NAME'], $email_body);
 
     mail($to, $subject, $email_body, $headers);
-
-    //if (!mail($to, $subject, $email_body, $headers)) {
-    //    $message = 'Ошибка отправки письма пользователю';
-    //} else {
+    // if (!mail($to, $subject, $email_body, $headers)) {
+    //     $message = 'Ошибка отправки письма пользователю';
+    // } else {
         $message = "Пользователь успешно добавлен!";
     //}
 }
+// Преобразуем сообщение в JSON-массив
 
 $response = array("message" => $message);
 header('Content-type: application/json');
-echo json_encode($response);
+echo json_encode($response, JSON_UNESCAPED_UNICODE);
 json_last_error_msg();

@@ -4,7 +4,7 @@ require 'components/otp.php';
 $ga = new PHPGangsta_GoogleAuthenticator();
 
 $db_username 		= 'root'; //database username
-$db_password 		= ''; //dataabse password
+$db_password 		= ''; //database password
 $db_name 			= 'pass'; //database name
 $db_host 			= 'localhost'; //hostname or IP
 
@@ -24,17 +24,5 @@ if (!R::testConnection()) {
         'error' => 'Ошибка подключения к БД'
     ), JSON_UNESCAPED_UNICODE);
 }
-
-function generateRandomString($length = 10)
-{
-    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-    $charactersLength = strlen($characters);
-    $randomString = '';
-    for ($i = 0; $i < $length; $i++) {
-        $randomString .= $characters[rand(0, $charactersLength - 1)];
-    }
-    return $randomString;
-}
-
 
 session_start();

@@ -1,4 +1,4 @@
-$(document).on('click', '.page-link', function(e){
+$(document).on('click', '.card-list__page-link', function(e){
     e.preventDefault();
     
     var page_number = $(this).data('page-number');

@@ -59,40 +59,40 @@ $email = $pass->email;
           <div class="card-red__wrapper wrapper_bg">
             <h2 class="card-red__title form-title title">Введите данные пользователя</h2>
             <form id="form" class="card-red__form form" action="#" method="post">
-            <input type="hidden" name="id" id="id" value="<?php echo $pass->id;?>" placeholder="Имя">
+            <input type="hidden" name="id" id="id" value="<?= $pass->id;?>" placeholder="Имя">
               <div class="card-red__form-inputs form-inputs">
               <label class="card-red__form-label form-label" for="form-input">
-                  <input value="<?php echo $second_name; ?>" type="text" placeholder="Фамилия" name="second_name" id="form-input"
+                  <input value="<?= $second_name; ?>" type="text" placeholder="Фамилия" name="second_name" id="form-input"
                     class="card-red__form-input form-input _required">
                     <span class="input__error"><!--ОШИБКА ПРИ ЗАПОЛНЕНИИ--></span>
                 </label>
                 <label class="card-red__form-label form-label" for="form-input">
-                  <input value="<?php echo $name; ?>" type="text" placeholder="Имя" name="first_name" id="form-input"
+                  <input value="<?= $name; ?>" type="text" placeholder="Имя" name="first_name" id="form-input"
                     class="card-red__form-input form-input _required">
                     <span class="input__error"><!--ОШИБКА ПРИ ЗАПОЛНЕНИИ--></span>
                 </label>
                 <label class="card-red__form-label form-label" for="form-input">
-                  <input value="<?php echo $large_name; ?>" type="text" placeholder="Отчество" name="large_name" id="form-input"
+                  <input value="<?= $large_name; ?>" type="text" placeholder="Отчество" name="large_name" id="form-input"
                     class="card-red__form-input form-input _required">
                     <span class="input__error"><!--ОШИБКА ПРИ ЗАПОЛНЕНИИ--></span>
                 </label>
                 <label class="card-red__form-label form-label" for="form-input">
-                  <input value="<?php echo $birthday; ?>" type="date" data-placeholder="Дата рождения" name="date" id="form-input"
+                  <input value="<?= $birthday; ?>" type="date" data-placeholder="Дата рождения" name="date" id="form-input"
                     class="card-red__form-input form-input fa-regular fa-calendar-days _required">
                     <span class="input__error"><!--ОШИБКА ПРИ ЗАПОЛНЕНИИ--></span>
                 </label>
                 <label class="card-red__form-label form-label" for="form-input">
-                  <input value="<?php echo $phone; ?>" type="tel" placeholder="Номер телефона" name="tel" id="form-input"
+                  <input value="<?= $phone; ?>" type="tel" placeholder="Номер телефона" name="tel" id="form-input"
                     class="card-red__form-input form-input _required">
                     <span class="input__error"><!--ОШИБКА ПРИ ЗАПОЛНЕНИИ--></span>
                 </label>
                 <label class="card-red__form-label form-label" for="form-input">
-                  <input value="<?php echo $email; ?>" type="email" placeholder="Email" name="email" id="form-input"
+                  <input value="<?= $email; ?>" type="email" placeholder="Email" name="email" id="form-input"
                     class="card-red__form-input form-input _required">
                     <span class="input__error"><!--ОШИБКА ПРИ ЗАПОЛНЕНИИ--></span>
                 </label>
                 <label class="card-red__form-label form-label" for="form-input">
-                  <input value="<?php echo $passport; ?>" type="text" placeholder="Серия и номер паспорта" name="passport" id="form-input"
+                  <input value="<?= $passport; ?>" type="text" placeholder="Серия и номер паспорта" name="passport" id="form-input"
                     class="card-red__form-input form-input _required">
                     <span class="input__error"><!--ОШИБКА ПРИ ЗАПОЛНЕНИИ--></span>
                 </label>

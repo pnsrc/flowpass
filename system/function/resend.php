@@ -1,8 +1,6 @@
 <?php
 require "../init.php";
-?>
-<?php if (isset($_SESSION['logged_user'])) : ?>
-    <?php
+if (isset($_SESSION['logged_user'])) :
     // Получаем id из адресной строки
     $id = $_GET['id'];
     // Ищем в БД запись с таким id
@@ -23,7 +21,7 @@ require "../init.php";
         $headers .= "Content-Type: text/html; charset=UTF-8\r\n";
 
 
-        $message = "<p>Здравствуйте, " . $pass->fio . "!</p> <br> Вам было отправлено повторное письмо ! <br>Вот ваш токен: " . $pass->token. "<br> Пожалуйста, пройдите по адресу <a href='https://".$_SERVER['SERVER_NAME']."/pwa'>ссылке</a><br>С уважением, Администрация";
+        $message = "<p>Здравствуйте, " . $pass->fio . "!</p> <br> Вам было отправлено повторное письмо! <br>Вот ваш токен: " . $pass->token . "<br> Пожалуйста, пройдите по <a href='https://" . $_SERVER['SERVER_NAME'] . "/pwa'>ссылке</a><br>С уважением, Администрация";
 
 
         mail($to, $subject, $message, $headers);
@@ -31,7 +29,6 @@ require "../init.php";
         // С помощью js перенаправляем историю назад
         echo '<script>history.back();</script>';
     }
-  ?>
-<?php else : ?>
-Доступ запрещен
+else : ?>
+    Доступ запрещен
 <?php endif; ?>

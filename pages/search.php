@@ -35,7 +35,7 @@ $passes = R::findAll('pass');
     <main>
       <section class="search">
         <div class="search__container container">
-          <!---<h1 class="card-list__title title">Здравствуйте, <?php echo $_SESSION['logged_user']->firstname . ' ' . $_SESSION['logged_user']->lastname; ?></h1>--->
+          <!---<h1 class="card-list__title title">Здравствуйте, <?= $_SESSION['logged_user']->firstname . ' ' . $_SESSION['logged_user']->lastname; ?></h1>--->
           <h1 class="search__title title">Поиск</h1>
           <div class="search__form card-list__wrapper wrapper_bg">
             <label class="search__label" for="search-input">

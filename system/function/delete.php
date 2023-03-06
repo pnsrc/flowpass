@@ -1,8 +1,7 @@
 <?php
 require "../init.php";
-?>
-<?php if (isset($_SESSION['logged_user'])) : ?>
-    <?php
+if (isset($_SESSION['logged_user'])) :
+
     // Получаем id из адресной строки
     $id = $_GET['id'];
     // Ищем в БД запись с таким id
@@ -21,7 +20,7 @@ require "../init.php";
         echo '<script>window.location.href="/";</script>';
     }
 
-  ?>
-<?php else : ?>
-Доступ запрещен
-<?php endif; ?>
+
+else : ?>
+    Доступ запрещен
+<? endif; ?>

@@ -47,7 +47,7 @@ if (isset($_FILES['file'])) {
 
                         $email_body = "<p>Здравствуйте, " . $value[3] .
                             "!</p> <br>Ваши данные были внесены в систему пропусков flowpas//! <br>Вот ваш токен: " . $user->token .
-                            "<br> Пожалуйста, пройдите по адресу <a href='https://" . $_SERVER['SERVER_NAME'] .
+                            "<br> Пожалуйста, пройдите по <a href='https://" . $_SERVER['SERVER_NAME'] .
                             "/pwa'>ссылке</a><br>С уважением, Администрация";
                     
                     

@@ -20,16 +20,14 @@ if (isset($_POST['do_signup'])) {
         exit();
     }
 
-
     // Проверить, существует ли пользователь с таким же логином
     $user = R::findOne('admins', 'email = ?', [$email]);
     if ($user) {
         // Если пользователь существует, вернуть ошибку
-        echo json_encode(['error' => 'User with this email already exists'],JSON_UNESCAPED_UNICODE);
+        echo json_encode(['error' => 'User with this email already exists'], JSON_UNESCAPED_UNICODE);
     } else {
         // Если пользователь не существует, проверить, совпадают ли пароли
         if ($password == $confirm_password) {
-            $secret = $ga->createSecret();
             // Если пароли совпадают, создать нового пользователя
             $user = R::dispense('admins');
             $user->password = password_hash($password, PASSWORD_DEFAULT);
@@ -38,18 +36,14 @@ if (isset($_POST['do_signup'])) {
             $user->middlename = $middlename;
             $user->email = $email;
             $user->toggle = true;
-            $user->otp = 'false';
-            $user->otp_token = $secret;
             $user->token = bin2hex(random_bytes(32));
             R::store($user);
             // Перенаправить пользователя на главную страницу
             echo "<script>window.location.href = '/';</script>";
         } else {
             // Если пароли не совпадают, вернуть ошибку
-            echo json_encode(['error' => 'Passwords do not match'],JSON_UNESCAPED_UNICODE);
+            echo json_encode(['error' => 'Passwords do not match'], JSON_UNESCAPED_UNICODE);
         }
     }
 }
-
-
 ?>

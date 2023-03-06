@@ -16,6 +16,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
         if (response.ok) {
           let result = await response.json();
+          console.log(result);
           if (result.message !== "Пользователь с таким email уже существует!") {
             alert(result.message);
             chosenImg.setAttribute('src', '../assets/img/no-img_bg-user.svg');

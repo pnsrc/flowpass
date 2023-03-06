@@ -36,9 +36,7 @@ $getotp = $_SESSION['logged_user']->otp;
           <div class="settings__container container">
             <h1 class="settings__title title">Настройки</h1>
             <div class="settings__wrapper wrapper_bg">
-
-              <?php
-              if ($toggle === 1) {
+              <? if ($toggle === 1) {
                 echo '<div class="settings__row">
                 <p class="settings__text">Разрешить доступ к управлению пропусками</p>
                 <button data-num="1" class="settings__button button">Разрешить</button>
@@ -49,8 +47,6 @@ $getotp = $_SESSION['logged_user']->otp;
                 <button data-num="1" class="settings__button button">Запретить</button>
               </div>';
               }
-              ?>
-              <?php
               if ($getotp === "false") {
                 echo '<div class="settings__row">
                 <p class="settings__text">Авторизация с помощью одноразового кода</p>
@@ -61,8 +57,7 @@ $getotp = $_SESSION['logged_user']->otp;
                 <p class="settings__text">Авторизация с помощью одноразового кода</p>
                 <button data-num="3" class="settings__button button">Отключить</button>
               </div>';
-              }
-              ?>
+              } ?>
               <div class="settings__row">
                 <p class="settings__text">Экспортировать пользователей из 1С</p>
                 <button data-num="4" class="settings__button button">Экспортировать</button>
@@ -92,7 +87,7 @@ $getotp = $_SESSION['logged_user']->otp;
               <p class="popup__text">После активации данной функции, вы будете обязаны вводить OTP-код, который генерирует приложение Google Authenticator. Сессия автоматически закончиться, после нажатия кнопки.</p>
               <form class="popup__form form" action="/settings" method="post">
                 <label style="text-align: center;" for="form-input">
-                  <img src="<?php echo $qrCodeUrl; ?>" alt="QR code" />
+                  <img src="<?= $qrCodeUrl; ?>" alt="QR code" />
                 </label>
                 <input type="submit" value="Подтвердить" name="submit-2fa" class="popup__form-button form-button button">
               </form>
@@ -113,7 +108,7 @@ $getotp = $_SESSION['logged_user']->otp;
               <p class="popup__text">Для импорта пользователей, настройте форму, согласно <a style="display: inline;" href='https://wiki.flowpass.ru/'>инструкции</a>.</p>
               <!--загрузки документа на ajax-->
               <form id="upload" class="popup__form form" action="/settings" method="post" enctype="multipart/form-data">
-                <label class="popup__form-button form-button" for="form-input_file">
+                <label class="popup__form-button form-button" for="file">
                   <input type="file" id='file' name="file" class="popup__form-input form-input">
                   <p>Выбрать файл</p>
                   <i class="fa-regular fa-folder-open"></i>
