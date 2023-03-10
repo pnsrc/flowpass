@@ -6,5 +6,4 @@ if (isset($_SESSION['logged_user'])) :
 else :
   include "system/login.php";
   include 'pages/_index.php';
-
 endif;

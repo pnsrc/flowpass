@@ -14,7 +14,7 @@ $(document).on("click", ".settings__button", (e) => {
   document.querySelector("body").classList.add("lock");
 
   modalOverlay.addEventListener("click", (e) => {
-    if (e.target == modalOverlay || e.target.closest('.popup__close.icon')) {
+    if (e.target == modalOverlay || e.target.closest('.popup__close')) {
       modalOverlay.classList.remove("popup_active");
       document.querySelector("body").classList.remove("lock");
       modals.forEach((modal) => {

@@ -1,12 +1,12 @@
 .settings__wrapper {
   padding: 30px 40px;
   max-width: 750px;
-  width: 100%;
   margin: 0 auto;
   position: absolute;
   top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  left: 10px;
+  right: 10px;
+  transform: translateY(-50%);
 }
 .settings__row {
   display: flex;
@@ -30,7 +30,20 @@
   padding: 30px 20px;
   background-color: #fff;
   max-width: 379px;
+  margin: 0 auto;
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  right: 10px;
+  transform: translateY(-50%);
   border-radius: 10px;
+}
+.popup__close {
+  position: absolute;
+  font-size: 32px;
+  right: 20px;
+  top: 30px;
+  cursor: pointer;
 }
 .popup__title.title {
   color: #0C4074;
@@ -42,11 +55,15 @@
   line-height: 118.75%;
   margin-bottom: 15px;
 }
-.popup__form-label {
+.popup__img.img {
+  width: 150px;
+  margin: 0 auto 20px;
+}
+.popup .popup__form-label {
   margin-bottom: 15px;
   border-radius: 6px;
 }
-.popup__form-label p {
+.popup .popup__form-label p {
   margin-bottom: 15px;
   margin-left: 15px;
 }
@@ -59,19 +76,12 @@
   box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.35);
 }
 .popup label.popup__form-button {
-  display: flex;
   padding: 10px;
-  position: relative;
-  gap: 5px;
-  align-items: center;
   justify-content: center;
-  border-radius: 6px;
   font-size: 16px;
-  box-shadow: 0px 3px 10px 0px rgba(0, 0, 0, 0.25);
-  cursor: pointer;
-  transition: box-shadow 0.3s ease;
 }
-.popup label.popup__form-button p, .popup label.popup__form-button i {
+.popup label.popup__form-button p,
+.popup label.popup__form-button i {
   font-size: unset;
 }
 .popup label.popup__form-button:hover {
@@ -79,4 +89,26 @@
 }
 .popup label.popup__form-button input[type=file] {
   display: none;
+}
+
+@media (max-height: 575px) {
+  .settings__wrapper {
+    position: unset;
+    transform: unset;
+  }
+}
+@media (max-width: 486px) {
+  .settings__wrapper {
+    padding: 20px;
+  }
+  .settings__button.button {
+    font-size: 14px;
+  }
+  .settings__row {
+    gap: 5px;
+  }
+  .settings__text {
+    flex-shrink: 1;
+    font-size: 14px;
+  }
 }/*# sourceMappingURL=settings.css.map */

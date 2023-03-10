@@ -1,22 +1,15 @@
 .search__form {
   position: absolute;
   top: 40%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 100%;
+  left: 10px;
+  right: 10px;
   display: flex;
   flex-direction: column;
 }
 .search__form.card-list__wrapper {
   min-height: unset;
+  max-height: 500px;
 }
-.search__result {
-  padding: 0 15px;
-}
-.search__result li:not(:last-child) {
-  margin-bottom: 10px;
-}
-
 .search__label {
   transition: box-shadow 0.3s ease;
   box-shadow: 0px 3px 10px 0px rgba(0, 0, 0, 0.25);
@@ -27,6 +20,16 @@
 .search__label:hover {
   box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.35);
 }
+.search__input {
+  height: 40px;
+}
+.search__result {
+  padding: 0 15px;
+  overflow-y: auto;
+}
+.search__result li {
+  padding: 10px 0;
+}
 
 .fa-magnifying-glass {
   position: absolute;
@@ -34,4 +37,23 @@
   top: 50%;
   transform: translateY(-50%);
   font-size: 16px;
+}
+
+@media (max-height: 575px) {
+  .search__form {
+    position: unset;
+  }
+}
+@media (max-width: 575px) {
+  .search__form {
+    top: 30%;
+  }
+}
+@media (max-width: 486px) {
+  .search__form {
+    padding: 30px 10px;
+  }
+  .search__input, .search__result {
+    padding: 0 10px;
+  }
 }/*# sourceMappingURL=search.css.map */

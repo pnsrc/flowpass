@@ -206,6 +206,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 82px;
   height: 100%;
 }
 .card-red__form-imgs p {
@@ -225,4 +226,30 @@
 }
 .card-red__form-button {
   justify-content: center;
+}
+
+@media (max-width: 575px) {
+  .form-inputs {
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: repeat(7, 40px);
+  }
+  .form-block {
+    flex-direction: column;
+    align-items: center;
+  }
+  .form-block > div {
+    max-width: unset;
+  }
+  .card-red__form-imgs div {
+    align-self: baseline;
+  }
+}
+@media (max-width: 486px) {
+  .form-title.title {
+    font-size: 20px;
+  }
+  .card-new__wrapper,
+  .card-red__wrapper {
+    padding: 20px 15px;
+  }
 }/*# sourceMappingURL=card-form.css.map */

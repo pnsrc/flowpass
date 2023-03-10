@@ -1,17 +1,11 @@
 @import 'root';
+
 .settings {
 
-    &__container {
-    }
     &__wrapper {
         padding: 30px 40px;
         max-width: 750px;
-        width: 100%;
-        margin: 0 auto;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
+        @include absolute-middle;
     }
 
     &__row {
@@ -19,7 +13,8 @@
         align-items: center;
         justify-content: space-between;
         gap: 20px;
-        &:not(:last-child){
+
+        &:not(:last-child) {
             margin-bottom: 30px;
         }
     }
@@ -41,13 +36,16 @@
         padding: 30px 20px;
         background-color: $color-white;
         max-width: 379px;
+        @include absolute-middle;
         border-radius: 10px;
     }
 
     &__close {
-    }
-
-    &__body {
+        position: absolute;
+        font-size: 32px;
+        right: 20px;
+        top: 30px;
+        cursor: pointer;
     }
 
     &__title.title {
@@ -61,49 +59,74 @@
         line-height: calc(19/16*100%);
         margin-bottom: 15px;
     }
-
-    &__form-label{
+    &__img.img{
+        width: 150px;
+        margin: 0 auto 20px;
+    }
+    & &__form-label {
         margin-bottom: 15px;
         border-radius: 6px;
-        p{
+
+        p {
             margin-bottom: 15px;
             margin-left: 15px;
         }
     }
-    
 
     &__form-input.form-input {
         height: 40px;
         transition: box-shadow 0.3s ease;
         box-shadow: $box-shadow-input;
-        &:hover{
-            box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.35);
-        }
-    }
-    label.popup__form-button {
-        display: flex;
-        padding: 10px;
-        position: relative;
-        gap: 5px;
-        align-items: center;
-        justify-content: center;
-        border-radius: 6px;
-        font-size: 16px;
-        box-shadow: $box-shadow-input;
-        cursor: pointer;
-        transition: box-shadow .3s ease;
-        p,i{
-            font-size: unset;
-        }
+
         &:hover {
             box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.35);
         }
-        
+    }
+
+    label.popup__form-button {
+        padding: 10px;
+        justify-content: center;
+        font-size: 16px;
+
+        p,
+        i {
+            font-size: unset;
+        }
+
+        &:hover {
+            box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.35);
+        }
+
         input[type=file] {
             display: none;
         }
     }
+}
 
-    &__form-button {
+@media (max-height: 575px) {
+    .settings {
+        &__wrapper {
+            position: unset;
+            transform: unset;
+        }
+    }
+}
+
+@include max-w-486 {
+    .settings {
+        &__wrapper {
+            padding: 20px;
+        }
+        &__button.button {
+            font-size: 14px;
+        }
+        &__row {
+            gap: 5px;
+        }
+
+        &__text {
+            flex-shrink: 1;
+            font-size: 14px;
+        }
     }
 }

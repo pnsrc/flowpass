@@ -37,21 +37,7 @@ $email = $pass->email;
 
 <body>
   <div class="wrapper">
-    <header>
-    <nav class="header__nav header__nav_black">
-        <a href="/" class="header__logo">flowpass//</a>
-      </nav>
-      <nav class="header__nav">
-        <ul class="header__list">
-          <li><a href="/pass/make" class="header__link">Создать пропуск</a></li>
-          <li><a href="/" class="header__link">Список пропусков</a></li>
-          <li><a href="/search" class="header__link">Поиск</a></li>
-          <!-- <li><a href="/notify" class="header__link">Уведомления</a></li> -->
-          <li><a href="/settings" class="header__link">Настройки</a></li>
-          <li><a href="/exit" class="header__link">Выход</a></li>
-        </ul>
-      </nav>
-    </header>
+    <? include 'components/header.php' ?>
     <main>
       <section class="card-red">
         <div class="card-red__container container">
@@ -59,42 +45,35 @@ $email = $pass->email;
           <div class="card-red__wrapper wrapper_bg">
             <h2 class="card-red__title form-title title">Введите данные пользователя</h2>
             <form id="form" class="card-red__form form" action="#" method="post">
-            <input type="hidden" name="id" id="id" value="<?= $pass->id;?>" placeholder="Имя">
+              <input type="hidden" name="id" id="id" value="<?= $pass->id; ?>" placeholder="Имя">
               <div class="card-red__form-inputs form-inputs">
-              <label class="card-red__form-label form-label" for="form-input">
-                  <input value="<?= $second_name; ?>" type="text" placeholder="Фамилия" name="second_name" id="form-input"
-                    class="card-red__form-input form-input _required">
-                    <span class="input__error"><!--ОШИБКА ПРИ ЗАПОЛНЕНИИ--></span>
+                <label class="card-red__form-label form-label" for="form-input">
+                  <input value="<?= $second_name; ?>" type="text" placeholder="Фамилия" name="second_name" id="form-input" class="card-red__form-input form-input _required">
+                  <span class="input__error"><!--ОШИБКА ПРИ ЗАПОЛНЕНИИ--></span>
                 </label>
                 <label class="card-red__form-label form-label" for="form-input">
-                  <input value="<?= $name; ?>" type="text" placeholder="Имя" name="first_name" id="form-input"
-                    class="card-red__form-input form-input _required">
-                    <span class="input__error"><!--ОШИБКА ПРИ ЗАПОЛНЕНИИ--></span>
+                  <input value="<?= $name; ?>" type="text" placeholder="Имя" name="first_name" id="form-input" class="card-red__form-input form-input _required">
+                  <span class="input__error"><!--ОШИБКА ПРИ ЗАПОЛНЕНИИ--></span>
                 </label>
                 <label class="card-red__form-label form-label" for="form-input">
-                  <input value="<?= $large_name; ?>" type="text" placeholder="Отчество" name="large_name" id="form-input"
-                    class="card-red__form-input form-input _required">
-                    <span class="input__error"><!--ОШИБКА ПРИ ЗАПОЛНЕНИИ--></span>
+                  <input value="<?= $large_name; ?>" type="text" placeholder="Отчество" name="large_name" id="form-input" class="card-red__form-input form-input _required">
+                  <span class="input__error"><!--ОШИБКА ПРИ ЗАПОЛНЕНИИ--></span>
                 </label>
                 <label class="card-red__form-label form-label" for="form-input">
-                  <input value="<?= $birthday; ?>" type="date" data-placeholder="Дата рождения" name="date" id="form-input"
-                    class="card-red__form-input form-input fa-regular fa-calendar-days _required">
-                    <span class="input__error"><!--ОШИБКА ПРИ ЗАПОЛНЕНИИ--></span>
+                  <input value="<?= $birthday; ?>" type="date" data-placeholder="Дата рождения" name="date" id="form-input" class="card-red__form-input form-input fa-regular fa-calendar-days _required">
+                  <span class="input__error"><!--ОШИБКА ПРИ ЗАПОЛНЕНИИ--></span>
                 </label>
                 <label class="card-red__form-label form-label" for="form-input">
-                  <input value="<?= $phone; ?>" type="tel" placeholder="Номер телефона" name="tel" id="form-input"
-                    class="card-red__form-input form-input _required">
-                    <span class="input__error"><!--ОШИБКА ПРИ ЗАПОЛНЕНИИ--></span>
+                  <input value="<?= $phone; ?>" type="tel" placeholder="Номер телефона" name="tel" id="form-input" class="card-red__form-input form-input _required">
+                  <span class="input__error"><!--ОШИБКА ПРИ ЗАПОЛНЕНИИ--></span>
                 </label>
                 <label class="card-red__form-label form-label" for="form-input">
-                  <input value="<?= $email; ?>" type="email" placeholder="Email" name="email" id="form-input"
-                    class="card-red__form-input form-input _required">
-                    <span class="input__error"><!--ОШИБКА ПРИ ЗАПОЛНЕНИИ--></span>
+                  <input value="<?= $email; ?>" type="email" placeholder="Email" name="email" id="form-input" class="card-red__form-input form-input _required">
+                  <span class="input__error"><!--ОШИБКА ПРИ ЗАПОЛНЕНИИ--></span>
                 </label>
                 <label class="card-red__form-label form-label" for="form-input">
-                  <input value="<?= $passport; ?>" type="text" placeholder="Серия и номер паспорта" name="passport" id="form-input"
-                    class="card-red__form-input form-input _required">
-                    <span class="input__error"><!--ОШИБКА ПРИ ЗАПОЛНЕНИИ--></span>
+                  <input value="<?= $passport; ?>" type="text" placeholder="Серия и номер паспорта" name="passport" id="form-input" class="card-red__form-input form-input _required">
+                  <span class="input__error"><!--ОШИБКА ПРИ ЗАПОЛНЕНИИ--></span>
                 </label>
               </div>
               <div class="card-red__form-block form-block">
@@ -111,7 +90,7 @@ $email = $pass->email;
                   <div class="card-red__form-imgs">
                     <div>
                       <div class="card-red__form-img form-img img">
-                        <img src="../<?= $photo?>" id="old_image" alt="фото">
+                        <img src="../<?= $photo ?>" id="old_image" alt="фото">
                       </div>
                       <p id="old_file">Старое фото</p>
                     </div>
@@ -125,25 +104,25 @@ $email = $pass->email;
                   </div>
                   <div class="card-red__form-file form-file">
                     <label class="card-red__form-button form-button" for="form-input_file">
-                      <input type="file" accept=".jpeg, .png, .jpg" id="form-input_file" name="file"
-                        class="card-red__form-input form-input _required">
-                        <span class="input__error"><!--ОШИБКА ПРИ ЗАПОЛНЕНИИ--></span>
+                      <input type="file" accept=".jpeg, .png, .jpg" id="form-input_file" name="file" class="card-red__form-input form-input _required">
+                      <span class="input__error"><!--ОШИБКА ПРИ ЗАПОЛНЕНИИ--></span>
                       <p>Выбрать фото</p>
                       <i class="fa-regular fa-folder-open"></i>
                     </label>
                   </div>
                 </div>
-              </div>  
-              <input type="submit" value="Редактировать" name="red-card"
-                class="card-red__form-button form-button button">
+              </div>
+              <input type="submit" value="Редактировать" name="red-card" class="card-red__form-button form-button button">
             </form>
           </div>
         </div>
       </section>
     </main>
   </div>
+  <script src="../assets/libs/jquery/jquery-3.6.3.js"></script>
   <script src="../assets/js/form-validation.js"></script>
   <script src="../assets/js/phone-mask.js"></script>
+  <script src="../assets/js/script.js"></script>
 </body>
 
 </html>

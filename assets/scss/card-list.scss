@@ -49,12 +49,23 @@
     position: relative;
     z-index: 5;
 
-    & .card-list__id {
-      width: 32px;
-    }
+    & .card-list {
 
-    & .card-list__fio {
-      width: 336px;
+      &__id {
+        min-width: 32px;
+      }
+
+      &__fio {
+        min-width: 336px;
+      }
+
+      &__date {
+        min-width: 152px;
+      }
+
+      &__link-head {
+        min-width: 80px;
+      }
     }
 
     th,
@@ -93,5 +104,26 @@
       border-bottom: unset;
     }
 
+  }
+}
+@include max-w-768{
+  .card-list{
+    &__table {
+      & .card-list {
+        &__fio {
+          min-width: 260px;
+        }
+      }
+    }
+  }
+}
+@include max-w-486 {
+  .card-list {
+    &__wrapper{
+      padding: 20px 10px;
+    }
+    &__pagination{
+      font-size: 18px;
+    }
   }
 }

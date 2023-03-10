@@ -1,24 +1,17 @@
 @import 'root';
+
 .notify {
-
-    &__container {
-    }
-
-    &__title {
-    }
 
     &__wrapper {
         max-width: 980px;
         padding: 30px;
         margin: 0 auto;
-        &>span{
+
+        &>span {
             text-align: right;
             font-size: 16px;
             margin-bottom: 30px;
         }
-    }
-
-    &__rows {
     }
 
     &__row {
@@ -29,7 +22,8 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        &:not(:last-child){
+
+        &:not(:last-child) {
             margin-bottom: 30px;
         }
     }
@@ -38,14 +32,16 @@
         display: flex;
         align-items: center;
         gap: 20px;
-        i{
+
+        i {
             font-size: 32px;
         }
     }
 
     &__info {
         text-align: left;
-        .notify__title{
+
+        .notify__title {
             color: $color-blue;
             font-size: 24px;
             font-weight: 500;
@@ -65,9 +61,10 @@
         padding: 2px 5px;
         border-radius: 10px;
         transition: all .3s ease;
-        &:hover{
-          color: $color-white;
-          background-color: $color-blue;
+
+        &:hover {
+            color: $color-white;
+            background-color: $color-blue;
         }
     }
 }

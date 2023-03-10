@@ -12,52 +12,53 @@
 
 <body>
   <div class="wrapper">
-    <header>
-      <nav class="header__nav header__nav_black">
-        <a href="/" class="header__logo">flowpass//</a>
-      </nav>
-      <nav class="header__nav">
-        <ul class="header__list">
-          <li><a href="/pass/make" class="header__link">Создать пропуск</a></li>
-          <li><a href="/" class="header__link">Список пропусков</a></li>
-          <li><a href="/search" class="header__link">Поиск</a></li>
-          <!-- <li><a href="/notify" class="header__link">Уведомления</a></li> -->
-          <li><a href="/settings" class="header__link">Настройки</a></li>
-          <li><a href="/exit" class="header__link">Выход</a></li>
-        </ul>
-      </nav>
-    </header>
+    <? include 'components/header.php' ?>
     <main>
       <section class="card-list">
         <div class="card-list__container container">
-          <!---<h1 class="card-list__title title">Здравствуйте, <?= $_SESSION['logged_user']->firstname . ' ' . $_SESSION['logged_user']->lastname; ?></h1>--->
           <h1 class="card-list__title title">Список пропусков</h1>
           <div class="card-list__wrapper wrapper_bg">
-            <!--Вывод пропусков из ajax-->
-            <table class="card-list__table">
-              <thead>
-                <tr>
-                  <th class="card-list__id">ID</th>
-                  <th class="card-list__fio">ФИО</th>
-                  <th>Статус</th>
-                  <th>Дата активации</th>
-                  <th>Дата окончания</th>
-                  <th>Переход к пропуску</th>
-                </tr>
-              </thead>
-              <tbody id="all-products" class="row all-products">
-                <form id="filter-form" class="form" action='#' method="GET">
-                  <? include('../system/pagination.php'); ?>
-                </form>
-              </tbody>
-            </table>
+            <!--Вывод пропусков-->
+            <? require('../system/pass-load.php');
+            require('../system/buttons_page.php'); ?>
+            <div class="card-list__overflow overflow-x">
+              <table class="card-list__table">
+                <thead>
+                  <tr>
+                    <th class="card-list__id">ID</th>
+                    <th class="card-list__fio">ФИО</th>
+                    <th class="card-list__status">Статус</th>
+                    <th class="card-list__date">Дата активации</th>
+                    <th class="card-list__date">Дата окончания</th>
+                    <th class="card-list__link-head">Переход к пропуску</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <? if (count($paged_passes)) {
+                    foreach ($paged_passes as $pass) { ?>
+                      <tr>
+                        <td><?= $pass['id'] ?></td>
+                        <td><?= $pass['fio'] ?></td>
+                        <td><?= $pass['status'] == 'valid' ? 'Действующий' : 'Просрочен' ?></td>
+                        <td><?= $pass['date_activation'] ?></td>
+                        <td><?= $pass['date_expiration'] ?></td>
+                        <td><a href="/pass/view?id=<?= $pass['id'] ?>" class="card-list__link">Перейти</a></td>
+                      </tr>
+                  <? }
+                  } else {
+                    echo '<p class="card-list__nav alert alert-warning">Ничего не найдено</p>';
+                  } ?>
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       </section>
     </main>
   </div>
-  <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+  <script src="../assets/libs/jquery/jquery-3.6.3.js"></script>
   <script src="../assets/js/pages.js"></script>
+  <script src="../assets/js/script.js"></script>
 </body>
 
 </html>

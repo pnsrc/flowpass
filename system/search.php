@@ -7,7 +7,7 @@ if(!empty($_POST["search"])){ //Принимаем данные
     $results = R::find('pass', 'fio LIKE ?', ["%$search%"]);
     // Выводим данные в виде списка с помощью цикла Если ничего не найдено выводим сообщение
     foreach($results as $result){
-        echo "<li><a href='pass.php?id=".$result->id."'>".$result->fio."</a></li>";
+        echo "<li><a href='pass_info.php?id=".$result->id."'>".$result->id." ".$result->fio."</a></li>";
     } if(empty($results)){
         echo "<li>Ничего не найдено</li>";
     }

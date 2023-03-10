@@ -242,6 +242,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
+      width: 82px;
       height: 100%;
     }
 
@@ -267,5 +268,39 @@
 
   &__form-button {
     justify-content: center;
+  }
+}
+
+@include max-w-575{
+  .form{
+    &-inputs{
+      grid-template-columns: repeat(1, 1fr);
+      grid-template-rows: repeat(7, 40px);
+    }
+    &-block {
+      flex-direction: column;
+      align-items: center;
+      &>div{
+        max-width: unset;
+      }
+    }
+  }
+  .card-red {
+    &__form-imgs {
+      div{
+        align-self: baseline;
+      }
+    }
+  }
+}
+@include max-w-486{
+  .form{
+    &-title.title{
+      font-size: 20px;
+    }
+  }
+  .card-new__wrapper,
+  .card-red__wrapper{
+    padding: 20px 15px;
   }
 }

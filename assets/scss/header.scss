@@ -1,40 +1,103 @@
 @import 'root';
+
 .header {
-    &__nav {
+  &__nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $color-blue;
+    height: 44px;
+
+    &_black {
+      background-color: $color-black;
+      height: 70px;
+    }
+  }
+
+  &__logo {
+    font-weight: bold;
+    color: $color-white;
+    font-size: 20px;
+    line-height: calc(24/20*100%);
+    text-align: center;
+    font-family: 'Urbanist', sans-serif;
+  }
+
+  &__list {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    transition: all .3s ease;
+
+    &::before {
+      transition: background-color 0.3s ease;
+    }
+  }
+
+  &__link {
+    transition: all .3s ease;
+    border-radius: 10px;
+    color: $color-white;
+
+    &:hover {
+      color: $color-blue;
+      background-color: $color-white;
+      padding: 2px 5px;
+    }
+  }
+
+  &__burger {
+    display: none;
+    color: $color-white;
+    font-size: 25px;
+  }
+}
+
+@include max-w-768 {
+  header {
+    position: relative;
+    z-index: 5;
+  }
+
+  .header {
+    &__list {
+      visibility: hidden;
+      opacity: 0;
+      top: -100%;
+      left: 0;
       display: flex;
-      justify-content: center;
+      flex-direction: column;
       align-items: center;
       background-color: $color-blue;
-      height: 44px;
-      &_black {
-        background-color: $color-black;
-        height: 70px;
+      position: absolute;
+      padding: 10px;
+      z-index: -1;
+      width: 100%;
+
+      &.burger_active {
+        visibility: visible;
+        opacity: 1;
+        top: 100%;
+
+        &::before {
+          content: '';
+          position: absolute;
+          top: 100%;
+          left: 0;
+          height: 100vh;
+          width: 100%;
+          background-color: rgba(0, 0, 0, 0.3);
+        }
       }
     }
-  
-    &__logo {
-      font-weight: bold;
-      color: $color-white;
-      font-size: 20px;
-      line-height: calc(24/20*100%);
-      text-align: center;
-      font-family: 'Urbanist', sans-serif;
-    }
-  
-    &__list {
-      display: flex;
-      align-items: center;
-      gap: 15px;
-    }
-  
-    &__link {
-      transition: all .3s ease;
-      border-radius: 10px;
-      color: $color-white;
-      &:hover{
-        color: $color-blue;
-        background-color: $color-white;
-        padding: 2px 5px;
+
+    &__burger {
+      display: block;
+      transition: transform .3s ease;
+
+      &.fa-xmark {
+        transform: rotate(180deg);
       }
     }
   }
+}

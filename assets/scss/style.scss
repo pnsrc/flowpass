@@ -28,7 +28,8 @@ body {
   font-weight: 400;
   font-size: 15px;
   line-height: calc(18/15*100%);
-  &.lock{
+
+  &.lock {
     overflow: hidden;
   }
 }
@@ -66,6 +67,10 @@ main {
   object-fit: cover;
 }
 
+.overflow-x {
+  overflow: auto hidden;
+}
+
 .wrapper_bg {
   border-radius: 10px;
   box-shadow: $box-shadow-bg;
@@ -82,7 +87,9 @@ main {
   font-size: 18px;
   line-height: calc(21/18*100%);
   transition: all .3s ease;
-  &:hover{
+  font-family: inherit;
+
+  &:hover {
     background: transparent;
     color: $color-blue;
   }
@@ -102,14 +109,17 @@ main {
 
   &__text {
     max-width: 500px;
-    h1{
+
+    h1 {
       font-size: 54px;
       font-weight: bold;
     }
-    h1.main__title{
+
+    h1.main__title {
       font-family: 'Urbanist';
     }
-    p{
+
+    p {
       line-height: 120%;
       font-size: 24px;
     }
@@ -117,7 +127,8 @@ main {
 
   &__form {
     max-width: 425px;
-    form p{
+
+    form p {
       font-size: 13px;
       text-align: center;
     }
@@ -125,39 +136,64 @@ main {
 }
 
 @include max-w-992() {
-  .main{
-    &__row{
+  .main {
+    &__row {
       flex-direction: column;
       justify-content: center;
       gap: 20px;
     }
-    &__text{
+
+    &__text {
       text-align: center;
     }
   }
 }
-@include max-w-768(){
-  .main{
-    &__form{
+
+@include max-w-768() {
+  main {
+    padding: 25px 0;
+  }
+
+  .title {
+    font-size: 28px;
+    margin-bottom: 40px;
+  }
+
+  .main {
+    &__form {
       width: 100%;
     }
-    &__text{
-      h1{
+
+    &__text {
+      h1 {
         font-size: 46px;
       }
-      p{
+
+      p {
         font-size: 22px;
       }
     }
   }
 }
-@include max-w-486(){
-  .main{
-    &__text{
-      h1{
+
+@include max-w-486() {
+  .title {
+    font-size: 24px;
+    margin-bottom: 30px;
+  }
+
+  .button {
+    font-size: 16px;
+    padding: 4px 7px;
+  }
+
+  .main {
+    &__text {
+      h1 {
         font-size: 36px;
       }
-      p{
+
+      p {
         font-size: 18px;
       }
     }

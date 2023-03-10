@@ -14,6 +14,8 @@ $('#search-input').bind("change keyup input click", function() {
                 $(".search__result").html(data).fadeIn(); //Выводим полученые данные в списке
            }
        })
+    } else {
+        $('.search__result').html('');
     }
 })
     
@@ -22,7 +24,7 @@ $(".search__result").hover(function(){
 })
     
 //При выборе результата поиска, прячем список и заносим выбранный результат в input
-$(".search__result").on("click", "li", function(){
+$(".search__result").on("click", "a", function(){
     s_user = $(this).text();
     //$(".who").val(s_user).attr('disabled', 'disabled'); //деактивируем input, если нужно
     $(".search__result").fadeOut();
