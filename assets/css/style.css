@@ -190,9 +190,34 @@ main {
 .main__form {
   max-width: 425px;
 }
-.main__form form p {
+.main__form .form > .form-label {
+  margin-bottom: 30px;
+}
+.main__form .form .form-input {
+  outline: 1px solid #ced4da;
+}
+.main__form .form .form-input._error {
+  outline: 1px solid #FF4141;
+}
+.main__form .form .form-input._error ~ .input__error {
+  bottom: -40%;
+  font-size: 15px;
+  font-weight: 400;
+}
+.main__form .form .form-label,
+.main__form .form .form-label._error {
+  box-shadow: unset;
+}
+.main__form .form button {
+  margin: 0;
+}
+.main__form-message {
   font-size: 13px;
   text-align: center;
+  margin: 0;
+}
+.main__form-login .main__form-message._error, .main__form-2fa .main__form-message._error {
+  margin-top: 20px;
 }
 
 @media (max-width: 992px) {

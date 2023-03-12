@@ -2,6 +2,34 @@
   display: flex;
   flex-direction: column;
 }
+.form::before, .form::after {
+  opacity: 0;
+  visibility: hidden;
+  content: "";
+  position: absolute;
+}
+.form::before {
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  border-radius: 10px;
+  inset: 0;
+  z-index: 1;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+.form::after {
+  width: 48px;
+  height: 48px;
+  border: 5px solid #fff;
+  border-bottom-color: #0C4074;
+  border-radius: 50%;
+  z-index: 1;
+  inset: 0;
+  margin: auto;
+}
+@keyframes rotation {
+  100% {
+    transform: rotate(360deg);
+  }
+}
 .form > *:not(:last-child) {
   margin-bottom: 30px;
 }
@@ -51,7 +79,7 @@
 .form-input._error {
   outline: 2px solid #FF4141;
 }
-.form-input._error + .input__error {
+.form-input._error ~ .input__error {
   display: block;
   position: absolute;
   bottom: -50%;
@@ -226,6 +254,17 @@
 }
 .card-red__form-button {
   justify-content: center;
+}
+
+._loading {
+  position: relative;
+}
+._loading .form::before, ._loading .form::after {
+  opacity: 1;
+  visibility: visible;
+}
+._loading .form::after {
+  animation: rotation 1s linear infinite;
 }
 
 @media (max-width: 575px) {

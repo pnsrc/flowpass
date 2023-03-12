@@ -1,6 +1,6 @@
-<?php if (isset($_SESSION['logged_user'])) :
-  include 'system/2fa_auth.php';
-  include 'system/components/otp.php';
+<?php
+require './system/init.php';
+if (isset($_SESSION['logged_user'])) :
   include 'pages/2fa_auth.php';
 else : ?>
   Доступ запрещен

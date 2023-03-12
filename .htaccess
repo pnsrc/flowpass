@@ -35,7 +35,7 @@ RewriteRule ^settings$ /settings.php [L,QSA]
 RewriteRule ^notify$ /pages/notify.php [L,QSA]
 RewriteRule ^search$ /search.php [L,QSA]
 RewriteRule ^api/search$ /system/search.php [L,QSA]
-RewriteRule ^auth/2fa$ /system/2fa_auth.php [L,QSA]
+RewriteRule ^auth/2fa$ /pages/2fa_auth.php [L,QSA]
 RewriteRule ^api/pages$ /system/pagination.php [L,QSA]
 
 # Создать редирект для страницы редактирования пропусков

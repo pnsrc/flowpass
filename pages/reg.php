@@ -23,45 +23,52 @@
             </p>
           </div>
           <div class="main__form col-md-10 col-lg-5">
-            <form method="POST" action="/reg" class="p-4 p-md-5 border rounded-3 bg-light">
-              <div class="form-floating mb-3">
-                <input type="username" name="username" class="form-control" id="floatingInput" placeholder="Password">
+            <form id="form" method="POST" action="#" class="main__form-reg p-4 p-md-5 form border rounded-3 bg-light">
+              <div class="form-floating form-label">
+                <input type="text" name="first_name" class="form-control form-input _required" id="floatingInput" placeholder="Password">
                 <label for="floatingInput">Ваше имя</label>
+                <span class="input__error"><!--ОШИБКА ВАЛИДАЦИИ--></span>
               </div>
-              <div class="form-floating mb-3">
-                <input type="lastname" name="lastname" class="form-control" id="floatingInput" placeholder="Password">
+              <div class="form-floating form-label">
+                <input type="text" name="second_name" class="form-control form-input _required" id="floatingInput" placeholder="Password">
                 <label for="floatingInput">Ваша фамилия</label>
+                <span class="input__error"><!--ОШИБКА ВАЛИДАЦИИ--></span>
               </div>
-              <div class="form-floating mb-3">
-                <input type="middlename" name="middlename" class="form-control" id="floatingInput" placeholder="Password">
+              <div class="form-floating form-label">
+                <input type="text" name="large_name" class="form-control form-input _required" id="floatingInput" placeholder="Password">
                 <label for="floatingInput">Ваше отчество</label>
+                <span class="input__error"><!--ОШИБКА ВАЛИДАЦИИ--></span>
               </div>
-              <div class="form-floating mb-3">
-                <input type="email" name="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+              <div class="form-floating form-label">
+                <input type="text" name="email" class="form-control _required form-input" id="floatingInput" placeholder="name@example.com">
                 <label for="floatingInput">Ваша почта</label>
+                <span class="input__error"><!--ОШИБКА ВАЛИДАЦИИ--></span>
               </div>
-              <div class="form-floating mb-3">
-                <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Password">
+              <div class="form-floating form-label">
+                <input type="password" name="password" class="form-control form-input _required" id="floatingPassword" placeholder="Password">
                 <label for="floatingPassword">Пароль</label>
+                <span class="input__error"><!--ОШИБКА ВАЛИДАЦИИ--></span>
               </div>
-              <div class="form-floating mb-3">
-                <input type="password" name="password_2" class="form-control" id="floatingPassword" placeholder="Password">
+              <div class="form-floating form-label">
+                <input type="password" name="password_2" class="form-control form-input _required" id="floatingPassword" placeholder="Password">
                 <label for="floatingPassword">Пароль еще раз</label>
+                <span class="input__error"><!--ОШИБКА ВАЛИДАЦИИ--></span>
               </div>
-              <div class="form-floating mb-3">
-                <input type="password" name="key" class="form-control" id="floatingPassword" placeholder="Password">
+              <div class="form-floating form-label">
+                <input type="password" name="key" class="form-control _required form-input" id="floatingPassword" placeholder="Password">
                 <label for="floatingPassword">Ключ доступа</label>
+                <span class="input__error"><!--ОШИБКА ВАЛИДАЦИИ--></span>
               </div>
               <button class="w-100 btn btn-lg btn-primary" name='do_signup' type="submit">Регистрация</button>
               <hr class="my-4">
-              <p>Ключ доступа выдается только один на экземпляр</p>
+              <p class="main__form-message">Ключ доступа выдается только один на экземпляр</p>
             </form>
           </div>
         </div>
       </div>
     </main>
   </div>
-
+  <script src="../assets/js/form-validation.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D" crossorigin="anonymous" async></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>

@@ -128,9 +128,43 @@ main {
   &__form {
     max-width: 425px;
 
-    form p {
+    .form {
+      &>.form-label {
+        margin-bottom: 30px;
+      }
+
+      .form-input {
+        outline: 1px solid #ced4da;
+
+        &._error {
+          outline: 1px solid $color-red;
+
+          &~.input__error {
+            bottom: -40%;
+            font-size: 15px;
+            font-weight: 400;
+          }
+        }
+      }
+
+      .form-label,
+      .form-label._error {
+        box-shadow: unset;
+      }
+
+      button {
+        margin: 0;
+      }
+
+      
+    }
+    &-message {
       font-size: 13px;
       text-align: center;
+      margin: 0;
+      .main__form-login &._error, .main__form-2fa &._error{
+        margin-top: 20px;
+      }
     }
   }
 }

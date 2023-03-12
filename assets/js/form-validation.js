@@ -6,52 +6,67 @@ document.addEventListener('DOMContentLoaded', function () {
     e.preventDefault();
     let error = formValidate(form);
     let formData = new FormData(form);
-    formData.append('image', fileButton.files[0]);
+    if (fileButton) formData.append('image', fileButton.files[0]);
 
-    if (error == 0) {
-      if (form.classList.contains('card-new__form')) {
-        let response = await fetch('../../system/make.php', {
-          method: 'POST',
-          body: formData
-        });
-        if (response.ok) {
-          let result = await response.json();
-          console.log(result);
-          if (result.message !== "Пользователь с таким email уже существует!") {
-            alert(result.message);
-            chosenImg.setAttribute('src', '../assets/img/no-img_bg-user.svg');
-            fileName.textContent = 'Фото не загружено';
-            form.reset();
-            window.location.href = '/';
-          } else {
-            alert(result.message);
-            const input = document.querySelector('[type=email]');
-            input.parentElement.classList.add('_error');
-            input.classList.add('_error');
-          }
-        } else { alert("Ошибка выполнения fetch. Статус: " + response.statusText) }
+    if (error == 0) { //------------ОТПРАВКА ЗАПРОСА ПРИ ОТСУТСТВИИ ОШИБОК
+      const fetchSettings = { method: 'POST', body: formData };
+      let response;
+      form.parentElement.classList.add('_loading');
+      if (form.classList.contains('card-new__form')) { // СОЗДАНИЕ ПРОПУСКА
+        response = await fetch('../../system/make.php', fetchSettings);
+      } else if (form.classList.contains('card-red__form')) { // РЕДАКТИРОВАНИЕ ПРОПУСКА
+        response = await fetch('../../system/edit.php', fetchSettings);
+      } else if (form.classList.contains('main__form-login')) { // АВТОРИЗАЦИЯ
+        response = await fetch('../../system/login.php', fetchSettings);
+      } else if (form.classList.contains('main__form-reg')) { // РЕГИСТРАЦИЯ
+        response = await fetch('../../system/signup.php', fetchSettings);
+      } else if (form.classList.contains('main__form-2fa')) { // ПОДТВЕРЖДЕНИЕ КОДА
+        response = await fetch('../../system/2fa_auth.php', fetchSettings);
       }
-      if (form.classList.contains('card-red__form')) {
-        let response = await fetch('../../system/edit.php', {
-          method: 'POST',
-          body: formData
-        });
-        if (response.ok) {
-          let result = await response.json();
-          if (result.message !== 'Данные не были изменены. Измените какое-либо поле!') {
+      if (response.ok) {
+        let result = await response.json(),
+          submitMessage = document.querySelector('.main__form-message');
+        // ---------------------------------МАССИВ СООБЩЕНИИ ОШИБОК
+        const messages = [
+          'Неправильный пароль!',
+          'Пароли не совпадают!',
+          'Администратор не существует!',
+          'Администратор с таким email уже существует!',
+          'Неверный ключ доступа',
+          'Код не совпадает'
+        ];
+        if (result.message == "Пользователь с таким email уже существует!") {
+          alert(result.message);
+          const input = document.querySelector('[type=email]');
+          input.parentElement.classList.add('_error');
+          input.classList.add('_error');
+          form.parentElement.classList.remove('_loading');
+        } else if (result.message == 'Данные не были изменены. Измените какое-либо поле!') {
+          alert(result.message);
+          form.parentElement.classList.remove('_loading');
+        } else if (messages.includes(result.message)) { // ----------ПРОВЕРКА СООБЩЕНИИ И ВЫВОД В РЕГИСТРАЦИИ/АВТОРИЗАЦИИ
+          submitMessage.innerHTML = result.message;
+          submitMessage.classList.add('_error');
+          form.parentElement.classList.remove('_loading');
+        } else {
+          // --------------------------РЕДИРЕКТ НА /auth/2fa ДЛЯ ПОДТВЕРЖДЕНИЯ КОДА
+          if (result.message == 'true') window.location.href = '/auth/2fa'
+          else {
             alert(result.message);
-            chosenImg.setAttribute('src', '../assets/img/no-img_bg-user.svg');
-            fileName.textContent = 'Фото не загружено';
+            if (submitMessage) submitMessage.innerHTML = '';
+            if (fileButton) {
+              chosenImg.setAttribute('src', '../assets/img/no-img_bg-user.svg');
+              fileName.textContent = 'Фото не загружено';
+            }
             form.reset();
+            form.parentElement.classList.remove('_loading');
             window.location.href = '/';
-          } else {
-            alert(result.message);
           }
-        } else { alert("Ошибка выполнения fetch. Статус: " + response.statusText) }
-      }
+        }
+      } else alert("Ошибка выполнения fetch. Статус: " + response.status + " " + response.statusText);
     }
   }
-
+  // ------------------------ВАЛИДАЦИЯ ФОРМ
   function formValidate(form) {
     let error = 0;
     let formReq = form.querySelectorAll('._required');
@@ -100,11 +115,21 @@ document.addEventListener('DOMContentLoaded', function () {
           input.classList.add('_error');
           error++;
         }
+      } else if (input.getAttribute('type') == 'password' && input.getAttribute('name') !== 'key' && input.value !== '') {
+        if (!passwordTest(input)) {
+          span.innerHTML = 'Необходимо минимум 8 символов';
+          input.parentElement.classList.add('_error');
+          input.classList.add('_error');
+          error++;
+        }
       } else if (input.getAttribute('type') == 'file' && !input.classList.contains('card-red__form-input') && !input.files[0]) {
         span.innerHTML = 'Выберите файл';
         input.parentElement.classList.add('_error');
         input.classList.add('_error');
         error++;
+      } else if ((input.getAttribute('name') == '2fa' || input.getAttribute('name') == 'key') && input.value !== '') {
+        input.parentElement.classList.remove('_error');
+        input.classList.remove('_error');
       } else {
         if (input.getAttribute('type') !== 'file') {
           span.innerHTML = 'Заполните это поле';
@@ -137,6 +162,10 @@ document.addEventListener('DOMContentLoaded', function () {
   function passportTest(input) {
     return /[0-9]{4}[\s][0-9]{6}/.test(input.value);
   }
+  // --------------РЕГУЛЯРКА ПАРОЛЯ
+  function passwordTest(input) {
+    return /\w{8}/.test(input.value);
+  }
   // --------------ПРОВЕРКА ФАЙЛА
   function fileTest(img) {
     if (!['image/jpeg', 'image/png'].includes(img.type)) {
@@ -158,8 +187,9 @@ document.addEventListener('DOMContentLoaded', function () {
   const fileButton = document.getElementById('form-input_file');
   const chosenImg = document.getElementById('chosen_image');
   const fileName = document.getElementById('file_name');
-
-  fileButton.onchange = () => {
-    fileTest(fileButton.files[0]);
+  if (fileButton) {
+    fileButton.onchange = () => {
+      fileTest(fileButton.files[0]);
+    }
   }
 });
