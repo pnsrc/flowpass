@@ -4,16 +4,16 @@ require 'components/otp.php';
 $ga = new PHPGangsta_GoogleAuthenticator();
 
 $db_username 		= 'root'; //database username
-$db_password 		= ''; //database password
+$db_password 		= 'root'; //database password
 $db_name 			= 'pass'; //database name
 $db_host 			= 'localhost'; //hostname or IP
 
 
 // проверяем, если host не localhost то включаем режим отладки
-if($_SERVER['HTTP_HOST'] == 'work.flow' || $_SERVER['HTTP_HOST'] == 'localhost'){
+if($_SERVER['HTTP_HOST'] == 'work.flow' || $_SERVER['HTTP_HOST'] == '192.168.0.11'){
     R::setup('mysql:host='. $db_host .';dbname='. $db_name, $db_username, $db_password);
 } else {
-    R::setup('mysql:host=localhost;dbname=flowpassru', 'flowpassru', 'root021A');
+    R::setup('mysql:host=localhost;dbname=u1969056_default', 'u1969056_default', '80BXVJ0esNko0bE0');
 
 }
 

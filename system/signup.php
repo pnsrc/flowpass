@@ -10,6 +10,8 @@ $firstname = $_POST['first_name'];
 $middlename = $_POST['large_name'];
 $email = $_POST['email'];
 $key = $_POST['key'];
+$secret_otp = $ga->createSecret();
+
 
 // ключ доступа к регистрации
 $access_key = "hehe";
@@ -33,6 +35,8 @@ if ($key == $access_key) {
             $user->email = $email;
             $user->toggle = true;
             $user->token = bin2hex(random_bytes(32));
+            $user->otp_token = $secret_otp;
+            $user->otp = "false";
             R::store($user);
             // Перенаправить пользователя на главную страницу
             $message = 'Регистрация прошла успешно!';

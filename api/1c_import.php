@@ -31,7 +31,7 @@ if (isset($_FILES['file'])) {
                         $user->date_expiration = date("Y-m-d H:i:s", strtotime("+1 year"));
                         $user->email = $value[5];
                         $user->tel = $value[4];
-                        $user->token = generateRandomString();
+                        $user->token = bin2hex(random_bytes(32));
                         $user->passport = '';
                         R::store($user);
 
@@ -54,7 +54,7 @@ if (isset($_FILES['file'])) {
                         mail($to, $subject, $email_body, $headers);
 
                     }
-                }       echo 'Файл успешно загружен';
+                }       echo 'Импорт был успешно выполнен';
             }
             else {
                 echo 'Неверный тип файла';
